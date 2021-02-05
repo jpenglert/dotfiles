@@ -35,7 +35,7 @@ elif [ -f /etc/bash_completion ]; then
 fi;
 
 # Support git branch completion
-source /usr/local/etc/bash_completion.d/git-completion.bash
+source /opt/homebrew/etc/bash_completion.d/git-completion.bash
 
 # Enable tab completion for `g` by marking it as an alias for `git`
 if type _git &> /dev/null; then
