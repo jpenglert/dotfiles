@@ -1,0 +1,11 @@
+# Add brew to path
+eval $(/opt/homebrew/bin/brew shellenv)
+
+# Use brew installed coreutils
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH";
+
+# Use brew gnu-sed over built in sed
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+
+# Use brew grep over build in grep
+export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
