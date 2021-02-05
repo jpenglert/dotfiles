@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#!/usr/bin/env bash
 
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
@@ -149,3 +150,15 @@ alias reload="exec ${SHELL} -l"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
+
+# Git pull all repos in the current directory
+alias multipull="find . -mindepth 1 -maxdepth 1 -type d -print -exec git -C {} pull \;"
+
+# Git pull all repos in the current directory
+alias multifetch="find . -mindepth 1 -maxdepth 1 -type d -print -exec git -C {} fetch \;"
+
+# Maven
+alias mct="mvn -T 1C test-compile" # Use 1 thread per CPU
+
+# Build maven project and docker image
+alias pimage='mvn -DksipTests=true clean dependency:copy-dependencies package dockerfile:tag@tag-dev'
