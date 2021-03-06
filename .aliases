@@ -161,4 +161,4 @@ alias multifetch="find . -mindepth 1 -maxdepth 1 -type d -print -exec git -C {} 
 alias mct="mvn -T 1C test-compile" # Use 1 thread per CPU
 
 # Build maven project and docker image
-alias pimage='mvn -DksipTests=true clean dependency:copy-dependencies package dockerfile:tag@tag-dev'
+alias pimage='mvn -DskipTests=true clean dependency:copy-dependencies package dockerfile:tag@tag-dev'
