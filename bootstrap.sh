@@ -5,7 +5,8 @@ cd "$(dirname "${BASH_SOURCE}")";
 git pull origin jenglert;
 
 function doIt() {
-	rsync --exclude ".git/" \
+	rsync \
+        --exclude ".git/" \
 		--exclude ".DS_Store" \
 		--exclude ".osx" \
 		--exclude "bootstrap.sh" \
