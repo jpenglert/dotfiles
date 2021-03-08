@@ -3,9 +3,9 @@
 # Install Oh-My-Zsh ###########################################################
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-# Install powerlevel9k theme ##################################################
-# See https://github.com/Powerlevel9k/powerlevel9k
-git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+# Install powerlevel10k theme ##################################################
+# See https://github.com/romkatv/powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 # Install powerline fonts #####################################################
 # See https://github.com/powerline/fonts
