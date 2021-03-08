@@ -6,7 +6,6 @@ alias dt="cd ~/Desktop"
 alias s="cd ~/src"
 alias h="history"
 alias j="jobs"
-alias dc="docker-compose"
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
