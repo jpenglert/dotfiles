@@ -79,6 +79,12 @@
 		fi \
 	}; f"
 
+    # Commit working directory as Work In Progress
+	wip = !git add -A && git commit -avm "WIP"
+
+    # Undo last commit
+	undo = reset --soft HEAD~1
+
 [apply]
 
 	# Detect whitespace errors when applying a patch
