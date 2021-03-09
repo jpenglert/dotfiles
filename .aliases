@@ -7,6 +7,11 @@ alias s="cd ~/src"
 alias h="history"
 alias j="jobs"
 
+# Since using brew installed coreutils uses gls
+# See https://github.com/ohmyzsh/ohmyzsh/issues/5349#issuecomment-387210275
+#alias ls="gls --color=always"
+alias ls='gls --color=tty'
+
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
 
