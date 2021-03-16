@@ -9,7 +9,6 @@ alias j="jobs"
 
 # Since using brew installed coreutils uses gls
 # See https://github.com/ohmyzsh/ohmyzsh/issues/5349#issuecomment-387210275
-#alias ls="gls --color=always"
 alias ls='gls --color=tty'
 
 # Enable aliases to be sudo’ed
@@ -128,3 +127,6 @@ alias mct="mvn -T 1C test-compile" # Use 1 thread per CPU
 
 # Build maven project and docker image
 alias pimage='mvn -DskipTests=true clean dependency:copy-dependencies package'
+
+# Create github PR quickly
+alias ghpr='gh pr create -w -f'
