@@ -100,5 +100,27 @@ brew install git-lfs
 brew install maven
 brew install maven-completion
 
+# GHPR (GitHub PR Tool)
+brew install gh
+
+# Graphite (GitHub PR Tool)
+brew install withgraphite/tap/graphite
+
+# jq (JSON processing)
+brew install jq
+
+# Kubernetes
+brew install kubectx
+brew install kubernetes-cli
+
+# node
+brew install node
+brew install yarn
+
+# Java
+brew install --cask temurin
+brew tap homebrew/cask-versions
+brew install --cask temurin11
+
 # Remove outdated versions from the cellar.
 brew cleanup
