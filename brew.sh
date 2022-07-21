@@ -84,6 +84,10 @@ brew install ack
 brew install git
 brew install git-lfs
 
+# Meslo LG Nerd Fond
+brew tap homebrew/cask-fonts
+brew install --cask font-meslo-lg-nerd-font
+
 # Java
 brew tap homebrew/cask-versions
 brew install --cask temurin11
@@ -98,19 +102,17 @@ brew install gh
 # Graphite (GitHub PR Tool)
 brew install withgraphite/tap/graphite
 
-# jq (JSON processing)
+# JSON
 brew install jq
+brew install jql
 
 # Kubernetes
-brew install kubectx
 brew install kubernetes-cli
+brew install kubectx
 
 # node
 brew install node
 brew install yarn
-
-# JSON Query Language
-brew install jql
 
 # Remove outdated versions from the cellar.
 brew cleanup
