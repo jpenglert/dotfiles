@@ -32,8 +32,8 @@ brew install gnu-sed
 #   chsh -s "${BREW_PREFIX}/bin/bash";
 # fi;
 
-# Install `wget` with IRI support.
-brew install wget --with-iri
+# Install `wget`
+brew install wget
 
 # Install GnuPG to enable PGP-signing commits.
 brew install gnupg
