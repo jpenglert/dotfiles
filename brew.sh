@@ -114,5 +114,9 @@ brew install kubectx
 brew install node
 brew install yarn
 
+# rectangle
+# https://github.com/rxhanson/Rectangle
+brew install --cask rectangle
+
 # Remove outdated versions from the cellar.
 brew cleanup
