@@ -77,3 +77,6 @@ brew install --cask rectangle
 
 # Remove outdated versions from the cellar.
 brew cleanup
+
+# Ruby
+brew instal rbenv
