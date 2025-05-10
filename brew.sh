@@ -75,8 +75,9 @@ brew install yarn
 # https://github.com/rxhanson/Rectangle
 brew install --cask rectangle
 
+# Ruby
+brew install ruby-build
+brew install rbenv
+
 # Remove outdated versions from the cellar.
 brew cleanup
-
-# Ruby
-brew instal rbenv
