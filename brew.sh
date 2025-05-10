@@ -43,12 +43,11 @@ brew install git
 brew install git-lfs
 
 # Meslo LG Nerd Fond
-brew tap homebrew/cask-fonts
 brew install --cask font-meslo-lg-nerd-font
 
 # Java
 brew tap homebrew/cask-versions
-brew install --cask temurin11
+brew install --cask temurin@21
 
 # Maven
 brew install maven
