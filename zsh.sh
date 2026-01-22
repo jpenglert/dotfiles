@@ -1,16 +1,12 @@
 #!/bin/zsh
 
-# Install Oh-My-Zsh ###########################################################
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+# Install Oh-My-Zsh (skip if already installed)
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+fi
 
-# Install powerlevel10k theme ##################################################
-# See https://github.com/romkatv/powerlevel10k
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-
-# Install powerline fonts #####################################################
-# See https://github.com/powerline/fonts
-git clone https://github.com/powerline/fonts.git --depth=1
-cd fonts
-./install.sh
-cd ..
-rm -rf fonts
+# Install powerlevel10k theme (skip if already installed)
+P10K_DIR="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+if [ ! -d "$P10K_DIR" ]; then
+	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$P10K_DIR"
+fi
