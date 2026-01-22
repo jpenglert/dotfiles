@@ -14,7 +14,7 @@ BREW_PREFIX=$(brew --prefix)
 # Install GNU core utilities (those that come with macOS are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 brew install coreutils
-ln -s "${BREW_PREFIX}/bin/gsha256sum" "${BREW_PREFIX}/bin/sha256sum"
+ln -sf "${BREW_PREFIX}/bin/gsha256sum" "${BREW_PREFIX}/bin/sha256sum"
 
 # Install some other useful utilities like `sponge`.
 brew install moreutils
@@ -42,38 +42,52 @@ brew install ack
 brew install git
 brew install git-lfs
 
-# Meslo LG Nerd Fond
+# Meslo LG Nerd Font
 brew install --cask font-meslo-lg-nerd-font
 
 # Java
-brew tap homebrew/cask-versions
 brew install --cask temurin@21
 
 # Maven
 brew install maven
 brew install maven-completion
 
-# GHPR (GitHub PR Tool)
+# GitHub CLI
 brew install gh
+
+# GitLab CLI
+brew install glab
+
+# Atlassian CLI
+brew tap atlassian/acli
+brew install acli
 
 # Graphite (GitHub PR Tool)
 brew install withgraphite/tap/graphite
 
 # JSON
 brew install jq
-brew install jql
 
 # Kubernetes
 brew install kubernetes-cli
 brew install kubectx
 
-# node
+# Node
 brew install node
 brew install yarn
+brew install pnpm
 
-# rectangle
-# https://github.com/rxhanson/Rectangle
+# iTerm2
+brew install --cask iterm2
+
+# Rectangle
 brew install --cask rectangle
+
+# Scroll Reverser (different scroll direction for mouse vs trackpad)
+brew install --cask scroll-reverser
+
+# asdf (version manager for multiple runtimes)
+brew install asdf
 
 # Ruby
 brew install ruby-build
