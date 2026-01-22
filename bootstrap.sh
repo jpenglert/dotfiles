@@ -1,18 +1,21 @@
 #!/bin/zsh
 
-cd "$(dirname "${BASH_SOURCE}")";
+cd "$(dirname "$0")";
 
 git pull origin jenglert-zsh;
 
-# Install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# Install oh-my-zsh (skip if already installed)
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+fi
 
 function doIt() {
 	rsync \
-        --exclude ".git/" \
+		--exclude ".git/" \
 		--exclude ".DS_Store" \
-		--exclude ".osx" \
 		--exclude "bootstrap.sh" \
+		--exclude "brew.sh" \
+		--exclude ".macos" \
 		--exclude "README.md" \
 		--exclude "LICENSE-MIT.txt" \
 		-avh --no-perms . ~;
