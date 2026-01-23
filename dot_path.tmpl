@@ -1,6 +1,6 @@
 {{- if eq .chezmoi.os "darwin" }}
 # Add brew to path
-eval $(/opt/homebrew/bin/brew shellenv)
+eval $({{ if eq .chezmoi.arch "arm64" }}/opt/homebrew{{ else }}/usr/local{{ end }}/bin/brew shellenv)
 
 # Use brew installed GNU utilities over macOS built-ins
 export PATH="{{ output "brew" "--prefix" "coreutils" | trim }}/libexec/gnubin:$PATH"
