@@ -7,9 +7,8 @@ alias s="cd ~/src"
 alias h="history"
 alias j="jobs"
 
-# Since using brew installed coreutils uses gls
-# See https://github.com/ohmyzsh/ohmyzsh/issues/5349#issuecomment-387210275
-alias ls='gls --color=tty'
+# GNU coreutils ls is already in PATH via .path, enable color output
+alias ls='ls --color=auto'
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
@@ -30,7 +29,7 @@ alias localip="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
 # Show active network interfaces
-alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
+alias ifactive="ifconfig | grep -B5 'status: active' | grep -o '^[a-z0-9]*'"
 
 # Flush Directory Service cache
 alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
@@ -72,9 +71,9 @@ alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && 
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
 # URL-encode strings
-alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
+alias urlencode='python3 -c "import sys, urllib.parse; print(urllib.parse.quote_plus(sys.argv[1]))"'
 
-# Merge PDF files, preserving hyperlinks
+# Merge PDF files, preserving hyperlinks (requires ghostscript: brew install ghostscript)
 # Usage: `mergepdf input{1,2,3}.pdf`
 alias mergepdf='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=_merged.pdf'
 
@@ -94,10 +93,13 @@ alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/C
 # find . -name .gitattributes | map dirname
 alias map="xargs -n1"
 
-# One of @janmoesen’s ProTip™s
-for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
-	alias "${method}"="lwp-request -m '${method}'"
-done
+# HTTP method aliases using curl
+alias GET='curl -X GET'
+alias HEAD='curl -I'
+alias POST='curl -X POST'
+alias PUT='curl -X PUT'
+alias DELETE='curl -X DELETE'
+alias OPTIONS='curl -X OPTIONS'
 
 # Stuff I never really use but cannot delete either because of http://xkcd.com/530/
 alias stfu="osascript -e 'set volume output muted true'"
@@ -105,10 +107,10 @@ alias pumpitup="osascript -e 'set volume output volume 100'"
 
 # Kill all the tabs in Chrome to free up memory
 # [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
-alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
+alias chromekill="ps ux | grep '[C]hrome Helper (Renderer)' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
 
 # Lock the screen (when going AFK)
-alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+alias afk="pmset displaysleepnow"
 
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec ${SHELL} -l"
