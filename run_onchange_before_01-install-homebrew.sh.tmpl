@@ -4,6 +4,6 @@ set -euo pipefail
 if ! command -v brew &> /dev/null; then
     echo "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    eval "$({{ if eq .chezmoi.arch "arm64" }}/opt/homebrew{{ else }}/usr/local{{ end }}/bin/brew shellenv)"
+    eval "$({{ template "brew-prefix" . }}/bin/brew shellenv)"
 fi
 {{ end -}}

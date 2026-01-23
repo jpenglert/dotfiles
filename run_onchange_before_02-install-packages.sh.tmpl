@@ -2,6 +2,9 @@
 #!/bin/bash
 set -euo pipefail
 
+# Ensure brew is available in this shell session
+eval "$({{ template "brew-prefix" . }}/bin/brew shellenv)"
+
 # Install command-line tools using Homebrew.
 
 # Make sure we're using the latest Homebrew.
