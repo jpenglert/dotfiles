@@ -1,0 +1,21 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+set -euo pipefail
+
+# Ask for sudo password upfront
+echo "Requesting sudo access for installation scripts..."
+sudo -v
+
+# Keep sudo alive in the background until all scripts complete
+# Refreshes every 50 seconds (default sudo timeout is 5 minutes)
+(
+    while true; do
+        sudo -n true
+        sleep 50
+    done
+) &
+
+# Save the PID so we can kill it later
+echo $! > /tmp/chezmoi-sudo-keepalive.pid
+echo "Sudo keepalive started (PID: $!)"
+{{ end -}}
