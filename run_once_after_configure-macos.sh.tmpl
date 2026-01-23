@@ -1,6 +1,7 @@
+{{- if eq .chezmoi.os "darwin" -}}
 #!/usr/bin/env bash
 
-# ~/.macos — https://mths.be/macos
+# macOS system preferences configuration
 
 # Close any open System Settings panes, to prevent them from overriding
 # settings we're about to change
@@ -445,7 +446,7 @@ sudo mdutil -E / > /dev/null
 ###############################################################################
 
 # Copy iTerm2 preferences (includes font, colors, and all settings)
-cp "${HOME}/init/com.googlecode.iterm2.plist" ~/Library/Preferences/
+cp "{{ .chezmoi.sourceDir }}/init/com.googlecode.iterm2.plist" ~/Library/Preferences/
 
 ###############################################################################
 # Time Machine                                                                #
@@ -534,7 +535,8 @@ defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool true
 ###############################################################################
 
 # Set up my preferred keyboard shortcuts
-cp init/rectangle.json ~/Library/Application\ Support/Rectangle/RectangleConfig.json 2> /dev/null
+mkdir -p ~/Library/Application\ Support/Rectangle
+cp "{{ .chezmoi.sourceDir }}/init/rectangle.json" ~/Library/Application\ Support/Rectangle/RectangleConfig.json 2> /dev/null
 
 ###############################################################################
 # Kill affected applications                                                  #
@@ -553,3 +555,4 @@ for app in "Activity Monitor" \
 	killall "${app}" &> /dev/null
 done
 echo "Done. Note that some of these changes require a logout/restart to take effect."
+{{ end -}}

@@ -1,0 +1,11 @@
+{{- $gitName := promptStringOnce . "gitName" "Git author name" -}}
+{{- $gitEmail := promptStringOnce . "gitEmail" "Git author email" -}}
+{{- $postalConfigPath := promptStringOnce . "postalConfigPath" "Postal config path (leave empty if not needed)" -}}
+
+[data]
+    gitName = {{ $gitName | quote }}
+    gitEmail = {{ $gitEmail | quote }}
+    postalConfigPath = {{ $postalConfigPath | quote }}
+
+[onepassword]
+    prompt = true

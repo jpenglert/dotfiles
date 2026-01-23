@@ -33,8 +33,12 @@ export MANPAGER='less -X';
 # https://stackoverflow.com/a/42265848/96656
 export GPG_TTY=$(tty);
 
+{{- if eq .chezmoi.os "darwin" }}
 # Ensure JAVA_HOME is set for mvn since JAVA_HOME will take precedence over homebrew dependency
 export JAVA_HOME=$(/usr/libexec/java_home)
+{{- end }}
 
+{{- if .postalConfigPath }}
 # Used for Postal.io development
-export POSTAL_LOCAL_CONFIG_FILE=/Users/jenglert/local.properties
+export POSTAL_LOCAL_CONFIG_FILE={{ .postalConfigPath | quote }}
+{{- end }}
