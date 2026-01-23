@@ -90,7 +90,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 # Compilation flags
-export ARCHFLAGS="-arch arm64"
+export ARCHFLAGS="-arch {{ if eq .chezmoi.arch "amd64" }}x86_64{{ else }}{{ .chezmoi.arch }}{{ end }}"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
