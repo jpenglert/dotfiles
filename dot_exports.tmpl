@@ -40,3 +40,27 @@ fi
 # Used for Postal.io development
 export POSTAL_LOCAL_CONFIG_FILE={{ .postalConfigPath | quote }}
 {{- end }}
+
+# Sendoso GitLab token
+export GITLAB_TOKEN={{ onepasswordRead "op://Sendoso/GitLab - Sendoso/Personal Access Token" }}
+
+# Sendoso GitHub personal access token (package registry readonly)
+export GITHUB_PKG_REG_TOKEN={{ onepasswordRead "op://Private/github/pvxzq3czuhf2cwujkz35qduqza" }}
+export GITHUB_PKG_TOKEN={{ onepasswordRead "op://Private/github/pvxzq3czuhf2cwujkz35qduqza" }}
+
+# Sendoso base directory for projects
+export CODE_DIR=~/src/sendoso
+
+# Apollo GraphQl API Key
+export APOLLO_KEY={{ onepasswordRead "op://Sendoso/Apollo API Key - Dev - Sendoso/credential" }}
+
+# Sendoso monolith env vars
+export APP_ENV=local
+export APP_HOST=localhost:3000
+
+# Bugsnag Auth Token
+export BUGSNAG_AUTH_TOKEN={{ onepasswordRead "op://Sendoso/Bugsnag - Sendoso/token" }}
+export BUGSNAG_PROJECT_API_KEY=oms-api
+
+# DataDog API Key
+export DD_API_KEY={{ onepasswordRead "op://Sendoso/Datadog - Sendoso/credential" }}
