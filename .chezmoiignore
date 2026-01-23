@@ -2,9 +2,5 @@ README.md
 LICENSE-MIT.txt
 init/
 .DS_Store
-bootstrap.sh
-brew.sh
-zsh.sh
-.macos
 .extra
 .claude/
