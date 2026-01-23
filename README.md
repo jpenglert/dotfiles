@@ -7,14 +7,16 @@ Dotfiles managed with [chezmoi](https://chezmoi.io/).
 Run this one-liner to set up a new machine:
 
 ```bash
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply jenglert
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --branch chezmoi jpenglert
 ```
 
 Or if using SSH:
 
 ```bash
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply git@github.com:jenglert/dotfiles.git
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --branch chezmoi git@github.com:jpenglert/dotfiles.git
 ```
+
+> **Note:** Once the chezmoi branch is merged to master, you can remove the `--branch chezmoi` flag.
 
 This will:
 1. Install chezmoi
