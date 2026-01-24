@@ -3,4 +3,5 @@ LICENSE-MIT.txt
 init/
 .DS_Store
 .extra
-.claude/
+.claude/settings.local.json
+CLAUDE.md
