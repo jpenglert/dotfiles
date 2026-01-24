@@ -8,5 +8,9 @@
     postalConfigPath = {{ $postalConfigPath | quote }}
 
 [onepassword]
-    command = "{{ template "brew-prefix" . }}/bin/op"
+{{- if eq .chezmoi.arch "arm64" }}
+    command = "/opt/homebrew/bin/op"
+{{- else }}
+    command = "/usr/local/bin/op"
+{{- end }}
     prompt = true
