@@ -8,4 +8,5 @@
     postalConfigPath = {{ $postalConfigPath | quote }}
 
 [onepassword]
+    command = "{{ template "brew-prefix" . }}/bin/op"
     prompt = true

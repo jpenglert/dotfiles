@@ -7,11 +7,11 @@ echo "Requesting sudo access for installation scripts..."
 sudo -v
 
 # Keep sudo alive in the background until all scripts complete
-# Refreshes every 50 seconds (default sudo timeout is 5 minutes)
+# Refreshes every 10 seconds to handle aggressive installers like Docker
 (
     while true; do
         sudo -n true
-        sleep 50
+        sleep 10
     done
 ) &
 
