@@ -161,7 +161,7 @@
 	# Use `hexdump` to diff binary files
 	textconv = hexdump -v -C
 
-[filter "lfs]
+[filter "lfs"]
 	clean = git-lfs clean -- %f
 	required = true
 	process = git-lfs filter-process
