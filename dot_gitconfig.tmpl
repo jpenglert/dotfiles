@@ -94,6 +94,10 @@
 	# Detect whitespace errors when applying a patch
 	whitespace = fix
 
+[blame]
+	ignoreRevsFile = .git-blame-ignore-revs
+	markUnblamableLines = true
+
 [core]
 
 	# Use custom `.gitignore` and `.gitattributes`
@@ -157,10 +161,19 @@
 	# Use `hexdump` to diff binary files
 	textconv = hexdump -v -C
 
+[filter "lfs]
+	clean = git-lfs clean -- %f
+	required = true
+	process = git-lfs filter-process
+	smudge = git-lfs smudge -- %f
+
 [help]
 
 	# Automatically correct and execute mistyped commands
 	autocorrect = 1
+
+[init]
+	defaultBranch = main
 
 [merge]
 
