@@ -1,5 +1,6 @@
 {{- if eq .chezmoi.os "darwin" -}}
 #!/usr/bin/env bash
+set -x  # Print each command before executing
 
 # macOS system preferences configuration
 
@@ -27,7 +28,8 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
 
 # Disable transparency in the menu bar and elsewhere
-defaults write com.apple.universalaccess reduceTransparency -bool true
+# Note: Requires manual change via System Settings > Accessibility > Display on modern macOS
+# defaults write com.apple.universalaccess reduceTransparency -bool true
 
 # Reduce motion for snappier transitions
 defaults write com.apple.Accessibility ReduceMotionEnabled -bool true
@@ -73,8 +75,8 @@ defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 # Disable the “Are you sure you want to open this application?” dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
-# Remove duplicates in the “Open With” menu (also see `lscleanup` alias)
-/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
+# Remove duplicates in the "Open With" menu (also see `lscleanup` alias)
+/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -r -domain local -domain system -domain user
 
 # Display ASCII control characters using caret notation in standard text views
 # Try e.g. `cd /tmp; unidecode "\x{0000}" > cc.txt; open -e cc.txt`
@@ -135,10 +137,11 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
 # Use scroll gesture with the Ctrl (^) modifier key to zoom
-defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
-defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
+# Note: Requires manual change via System Settings > Accessibility > Zoom on modern macOS
+# defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
+# defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
 # Follow the keyboard focus while zoomed in
-defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
+# defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 
 # Disable press-and-hold for keys in favor of key repeat
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
@@ -547,7 +550,6 @@ for app in "Activity Monitor" \
 	"Dock" \
 	"Finder" \
 	"Google Chrome" \
-	"iTerm2" \
 	"Mail" \
 	"Photos" \
 	"Rectangle" \
