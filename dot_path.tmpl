@@ -3,7 +3,7 @@
 eval $({{ template "brew-prefix" . }}/bin/brew shellenv)
 
 # Use brew installed GNU utilities over macOS built-ins
-export PATH="{{ output "brew" "--prefix" "coreutils" | trim }}/libexec/gnubin:$PATH"
-export PATH="{{ output "brew" "--prefix" "gnu-sed" | trim }}/libexec/gnubin:$PATH"
-export PATH="{{ output "brew" "--prefix" "grep" | trim }}/libexec/gnubin:$PATH"
+export PATH="{{ template "brew-prefix" . }}/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="{{ template "brew-prefix" . }}/opt/gnu-sed/libexec/gnubin:$PATH"
+export PATH="{{ template "brew-prefix" . }}/opt/grep/libexec/gnubin:$PATH"
 {{- end }}
