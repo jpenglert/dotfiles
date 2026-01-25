@@ -1,0 +1,87 @@
+packages:
+  taps:
+    - atlassian/acli
+    - withgraphite/tap
+
+  brews:
+    # GNU utilities (macOS versions are outdated)
+    - coreutils
+    - moreutils
+    - findutils
+    - gnu-sed
+    - grep
+    - gmp
+
+    # Networking
+    - wget
+
+    # Security
+    - gnupg
+
+    # Editors
+    - vim
+
+    # Search/file tools
+    - ack
+    - tree
+    - jq
+
+    # Git
+    - git
+    - git-lfs
+    - gh
+    - glab
+    - acli
+    - withgraphite/tap/graphite
+
+    # Java/Maven
+    - maven
+    - maven-completion
+
+    # Kubernetes
+    - kubernetes-cli
+    - kubectx
+
+    # Node.js
+    - node
+    - yarn
+    - pnpm
+
+    # Version managers
+    - asdf
+    - ruby-build
+    - rbenv
+
+  casks:
+    # Fonts
+    - font-meslo-lg-nerd-font
+
+    # Java runtime
+    - temurin@21
+
+    # Cloud/containers
+    - gcloud-cli
+    - docker-desktop
+
+    # Terminal
+    - iterm2
+
+    # Window management
+    - rectangle
+    - scroll-reverser
+
+    # Security
+    - 1password-cli
+    - gpg-suite
+
+    # AI tools
+    - chatgpt
+    - claude
+    - claude-code
+
+    # IDEs
+    - cursor
+    - visual-studio-code
+
+    # Knowledge management
+    - logseq

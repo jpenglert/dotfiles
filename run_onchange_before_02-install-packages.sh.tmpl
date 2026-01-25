@@ -4,129 +4,25 @@ set -euo pipefail
 
 # Ensure brew is available in this shell session
 eval "$({{ template "brew-prefix" . }}/bin/brew shellenv)"
-
-# Install command-line tools using Homebrew.
-
-# Make sure we're using the latest Homebrew.
-brew update
-
-# Upgrade any already-installed formulae.
-brew upgrade
-
-# Save Homebrew's installed location.
 BREW_PREFIX=$(brew --prefix)
 
-# Install GNU core utilities (those that come with macOS are outdated).
-brew install coreutils
+# Install packages using brew bundle
+# packages hash: {{ include ".chezmoidata/packages.yaml" | sha256sum }}
+brew bundle --file=/dev/stdin <<EOF
+{{ range .packages.taps -}}
+tap "{{ . }}"
+{{ end -}}
+{{ range .packages.brews -}}
+brew "{{ . }}"
+{{ end -}}
+{{ range .packages.casks -}}
+cask "{{ . }}"
+{{ end -}}
+EOF
+
+# Create sha256sum symlink (coreutils installs gsha256sum)
 ln -sf "${BREW_PREFIX}/bin/gsha256sum" "${BREW_PREFIX}/bin/sha256sum"
 
-# Install some other useful utilities like `sponge`.
-brew install moreutils
-# Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
-brew install findutils
-# Install GNU `sed`, overwriting the built-in `sed`.
-brew install gnu-sed
-
-# Install `wget`
-brew install wget
-
-# Install GnuPG to enable PGP-signing commits.
-brew install gnupg
-
-# Install more recent versions of some macOS tools.
-brew install vim
-brew install grep
-brew install gmp
-
-# Install other useful binaries.
-brew install ack
-brew install tree
-
-# Git
-brew install git
-brew install git-lfs
-
-# Meslo LG Nerd Font
-brew install --cask font-meslo-lg-nerd-font
-
-# Java
-brew install --cask temurin@21
-
-# Maven
-brew install maven
-brew install maven-completion
-
-# GitHub CLI
-brew install gh
-
-# GitLab CLI
-brew install glab
-
-# Atlassian CLI
-brew tap atlassian/acli
-brew install acli
-
-# Graphite (GitHub PR Tool)
-brew install withgraphite/tap/graphite
-
-# JSON
-brew install jq
-
-# Kubernetes
-brew install kubernetes-cli
-brew install kubectx
-
-# Google Cloud SDK
-brew install --cask google-cloud-sdk
-
-# Docker Desktop
-brew install --cask docker
-
-# Node
-brew install node
-brew install yarn
-brew install pnpm
-
-# iTerm2
-brew install --cask iterm2
-
-# Rectangle
-brew install --cask rectangle
-
-# Scroll Reverser (different scroll direction for mouse vs trackpad)
-brew install --cask scroll-reverser
-
-# asdf (version manager for multiple runtimes)
-brew install asdf
-
-# Ruby
-brew install ruby-build
-brew install rbenv
-
-# 1Password CLI (for chezmoi integration)
-brew install --cask 1password-cli
-
-# Chatgpt Desktop
-brew install --cask chatgpt
-
-# Claude Desktop
-brew install --cask claude
-
-# Claude Code CLI
-brew install --cask claude-code
-
-# Cursor IDE
-brew install --cask cursor
-
-# VS Code IDE
-brew install --cask visual-studio-code
-
-# GPG Suite
-brew install --cask gpg-suite
-
-# Logseq
-brew install --cask logseq
-
-# Remove outdated versions from the cellar.
+# Cleanup outdated versions
 brew cleanup
 {{ end -}}
