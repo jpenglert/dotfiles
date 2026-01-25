@@ -1,7 +1,18 @@
-README.md
-LICENSE-MIT.txt
-init/
+# Source Files #################################################################
 .DS_Store
 .extra
-.claude/settings.local.json
 CLAUDE.md
+LICENSE-MIT.txt
+README.md
+
+# Source Directories ###########################################################
+.claude/
+init/
+
+# External Directories #########################################################
+.oh-my-zsh/cache/
+
+# External Files ###############################################################
+
+# Compiled zsh script file (Zsh Word Code)
+.oh-my-zsh/**/*.zwc
