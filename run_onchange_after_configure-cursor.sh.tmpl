@@ -1,0 +1,22 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/usr/bin/env bash
+set -e
+
+# Symlink Cursor IDE settings to VS Code settings (if Cursor is installed)
+
+if [[ -d "/Applications/Cursor.app" ]]; then
+    CURSOR_USER_DIR="$HOME/Library/Application Support/Cursor/User"
+    VSCODE_USER_DIR="$HOME/Library/Application Support/Code/User"
+
+    # Ensure Cursor User directory exists
+    mkdir -p "$CURSOR_USER_DIR"
+
+    # Create symlinks (remove existing files/symlinks first)
+    for file in settings.json keybindings.json; do
+        if [[ -e "$VSCODE_USER_DIR/$file" ]]; then
+            rm -f "$CURSOR_USER_DIR/$file"
+            ln -s "$VSCODE_USER_DIR/$file" "$CURSOR_USER_DIR/$file"
+        fi
+    done
+fi
+{{ end -}}
