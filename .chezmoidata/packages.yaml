@@ -1,87 +1,99 @@
 packages:
-  taps:
-    - atlassian/acli
-    - withgraphite/tap
+  universal:
+    taps: []
 
-  brews:
-    # GNU utilities (macOS versions are outdated)
-    - coreutils
-    - moreutils
-    - findutils
-    - gnu-sed
-    - grep
-    - gmp
+    brews:
+      # GNU utilities (macOS versions are outdated)
+      - coreutils
+      - moreutils
+      - findutils
+      - gnu-sed
+      - grep
+      - gmp
 
-    # Networking
-    - wget
+      # Networking
+      - wget
 
-    # Security
-    - gnupg
+      # Security
+      - gnupg
 
-    # Editors
-    - vim
+      # Editors
+      - vim
 
-    # Search/file tools
-    - ack
-    - tree
-    - jq
+      # Search/file tools
+      - ack
+      - tree
+      - jq
 
-    # Git
-    - git
-    - git-lfs
-    - gh
-    - glab
-    - acli
-    - withgraphite/tap/graphite
+      # Git
+      - git
+      - git-lfs
+      - gh
 
-    # Java/Maven
-    - maven
-    - maven-completion
+      # Node.js
+      - node
+      - yarn
+      - pnpm
 
-    # Kubernetes
-    - kubernetes-cli
-    - kubectx
+      # Version managers
+      - asdf
+      - ruby-build
+      - rbenv
 
-    # Node.js
-    - node
-    - yarn
-    - pnpm
+    casks:
+      # Fonts
+      - font-meslo-lg-nerd-font
 
-    # Version managers
-    - asdf
-    - ruby-build
-    - rbenv
+      # Cloud/containers
+      - docker-desktop
 
-  casks:
-    # Fonts
-    - font-meslo-lg-nerd-font
+      # Terminal
+      - iterm2
 
-    # Java runtime
-    - temurin@21
+      # Window management
+      - rectangle
+      - scroll-reverser
 
-    # Cloud/containers
-    - gcloud-cli
-    - docker-desktop
+      # Security
+      - 1password-cli
+      - gpg-suite
 
-    # Terminal
-    - iterm2
+      # IDEs
+      - visual-studio-code
 
-    # Window management
-    - rectangle
-    - scroll-reverser
+      # Knowledge management
+      - logseq
 
-    # Security
-    - 1password-cli
-    - gpg-suite
+  work:
+    taps:
+      - atlassian/acli
+      - withgraphite/tap
 
-    # AI tools
-    - chatgpt
-    - claude
-    - claude-code
+    brews:
+      # Git tools
+      - glab
+      - acli
+      - withgraphite/tap/graphite
 
-    # IDEs
-    - cursor
-    - visual-studio-code
+      # Java/Maven
+      - maven
+      - maven-completion
 
-    # Knowledge management
-    - logseq
+      # Kubernetes
+      - kubernetes-cli
+      - kubectx
+
+    casks:
+      # Java runtime
+      - temurin@21
+
+      # Cloud
+      - gcloud-cli
+
+      # AI tools
+      - chatgpt
+      - claude
+      - claude-code
+
+      # IDEs
+      - cursor

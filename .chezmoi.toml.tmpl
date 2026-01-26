@@ -1,10 +1,12 @@
+{{- $isWorkComputer := promptBoolOnce . "isWorkComputer" "Is this your work computer" -}}
 {{- $gitName := promptStringOnce . "gitName" "Git author name" -}}
 {{- $gitEmail := promptStringOnce . "gitEmail" "Git author email" -}}
 {{- $postalConfigPath := promptStringOnce . "postalConfigPath" "Postal config path (leave empty if not needed)" -}}
 
 [data]
+    isWorkComputer = {{ $isWorkComputer }}
     gitName = {{ $gitName | quote }}
-    gitEmail = {{ $gitEmail | quote }}
+    gitEmail = {{ $gitEmail | quote }}  
     postalConfigPath = {{ $postalConfigPath | quote }}
 
 [onepassword]

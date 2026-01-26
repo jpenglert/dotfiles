@@ -8,15 +8,27 @@ BREW_PREFIX=$(brew --prefix)
 
 # Install packages using brew bundle
 # packages hash: {{ include ".chezmoidata/packages.yaml" | sha256sum }}
+# isWorkComputer: {{ .isWorkComputer }}
 brew bundle --file=/dev/stdin <<EOF
-{{ range .packages.taps -}}
+{{ range .packages.universal.taps -}}
 tap "{{ . }}"
 {{ end -}}
-{{ range .packages.brews -}}
+{{ range .packages.universal.brews -}}
 brew "{{ . }}"
 {{ end -}}
-{{ range .packages.casks -}}
+{{ range .packages.universal.casks -}}
 cask "{{ . }}"
+{{ end -}}
+{{ if .isWorkComputer -}}
+{{ range .packages.work.taps -}}
+tap "{{ . }}"
+{{ end -}}
+{{ range .packages.work.brews -}}
+brew "{{ . }}"
+{{ end -}}
+{{ range .packages.work.casks -}}
+cask "{{ . }}"
+{{ end -}}
 {{ end -}}
 EOF
 
