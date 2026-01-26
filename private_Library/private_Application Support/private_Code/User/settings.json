@@ -1,4 +1,26 @@
 {
+    "accessibility.signals.codeActionTriggered": {
+        "sound": "off"
+    },
+    "accessibility.signals.positionHasWarning": {
+        "sound": "off",
+        "announcement": "off"
+    },
+    "accessibility.signalOptions.volume": 0,
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file",
     "editor.minimap.enabled": false,
-    "editor.acceptSuggestionOnEnter": "off"
+    "editor.tabSize": 2,
+    "editor.indentSize": "tabSize",
+    "files.autoSave": "onFocusChange",
+    "git.blame.editorDecoration.enabled": true,
+    "git.mergeEditor": true,
+    "redhat.telemetry.enabled": true,
+    "terminal.explorerKind": "external",
+    "terminal.external.osxExec": "iTerm.app",
+    "terminal.integrated.fontFamily": "MesloLGM Nerd Font Mono",
+    "[ruby]": {
+        "editor.formatOnSave": false
+    }
 }
