@@ -110,3 +110,6 @@ packages:
 
       # IDEs
       - cursor
+
+      # Database
+      - mongodb-compass
