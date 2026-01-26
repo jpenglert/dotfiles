@@ -48,8 +48,10 @@ export GITLAB_TOKEN={{ onepasswordRead "op://Sendoso/GitLab - Sendoso/Personal A
 export GITHUB_PKG_REG_TOKEN={{ onepasswordRead "op://Private/github/pvxzq3czuhf2cwujkz35qduqza" }}
 export GITHUB_PKG_TOKEN={{ onepasswordRead "op://Private/github/pvxzq3czuhf2cwujkz35qduqza" }}
 
+{{- if .isWorkComputer }}
 # Sendoso base directory for projects
 export CODE_DIR=~/src/sendoso
+{{- end }}
 
 # Apollo GraphQl API Key
 export APOLLO_KEY={{ onepasswordRead "op://Sendoso/Apollo API Key - Dev - Sendoso/credential" }}
