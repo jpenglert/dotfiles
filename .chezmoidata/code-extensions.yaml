@@ -1,14 +1,26 @@
+# Extensions for VS Code and Cursor (code-oss based editors)
 extensions:
+  # Installed to both VS Code and Cursor
   universal:
     - anthropic.claude-code
+    - bierner.markdown-preview-github-styles
+    - hbenl.vscode-test-explorer
+    - gruntfuggly.todo-tree
     - mermaidchart.vscode-mermaid-chart
     - mikestead.dotenv
     - ms-azuretools.vscode-containers
     - ms-azuretools.vscode-docker
-    - ms-vscode-remote.remote-containers
+    - ms-vscode.makefile-tools
+    - ms-vscode.test-adapter-converter
+    - redhat.vscode-yaml
     - shopify.ruby-lsp
     - vue.volar
 
-  vscode: []
+  # VS Code only
+  vscode:
+    - bierner.markdown-emoji
+    - ms-vscode-remote.remote-containers
 
-  cursor: []
+  # Cursor only
+  cursor:
+    - anysphere.remote-containers
