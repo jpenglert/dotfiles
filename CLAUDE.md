@@ -53,7 +53,23 @@ chezmoi add ~/.newconfig
 
 - zsh with oh-my-zsh framework
 - powerlevel10k theme (configured in `dot_p10k.zsh`)
-- Plugins: git, alias-finder, docker-compose, gcloud, mvn, zsh-syntax-highlighting
+- Plugins: git, alias-finder, docker, docker-compose, gcloud, mvn, zsh-syntax-highlighting
+
+### Shell Dotfiles
+
+The `.zshrc` sources several dotfiles for organization. Each has a specific purpose:
+
+- **`dot_path.tmpl`** → `~/.path` - All PATH modifications go here
+- **`dot_exports.tmpl`** → `~/.exports` - Environment variables and secrets (via 1Password)
+- **`dot_aliases`** → `~/.aliases` - Shell aliases
+- **`dot_functions`** → `~/.functions` - Shell functions
+
+When making changes:
+- Adding to PATH → edit `dot_path.tmpl`
+- Adding environment variables → edit `dot_exports.tmpl`
+- Adding aliases → edit `dot_aliases`
+- Adding shell functions → edit `dot_functions`
+- Changing zsh/oh-my-zsh config (plugins, theme, options) → edit `dot_zshrc.tmpl`
 
 ### Template Variables
 
