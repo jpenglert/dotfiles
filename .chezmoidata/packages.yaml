@@ -62,6 +62,9 @@ packages:
       # IDEs
       - visual-studio-code
 
+      # Git GUI
+      - fork
+
       # Knowledge management
       - logseq
 
