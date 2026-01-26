@@ -4,6 +4,7 @@ packages:
 
     brews:
       # GNU utilities (macOS versions are outdated)
+      - bash
       - coreutils
       - moreutils
       - findutils
