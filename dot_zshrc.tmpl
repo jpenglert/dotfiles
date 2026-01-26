@@ -105,5 +105,11 @@ for file in ~/.{path,exports,aliases,functions,extra}; do
 done;
 unset file;
 
+{{- if .isWorkComputer }}
+# oso-cli completions (bashcompinit enables bash-style completions in zsh)
+autoload -Uz +X bashcompinit && bashcompinit
+eval "$(oso completions)"
+{{- end }}
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
