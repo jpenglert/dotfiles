@@ -1,0 +1,3 @@
+anthropic.claude-code
+shopify.ruby-lsp
+vue.volar
