@@ -1,0 +1,10 @@
+{{- if and (eq .chezmoi.os "darwin") .isWorkComputer -}}
+#!/usr/bin/env bash
+set -e
+
+# asdf plugins for Sendoso development
+
+# Add plugins (ignore errors if already installed)
+asdf plugin add nodejs || true
+asdf plugin add ruby || true
+{{ end -}}
