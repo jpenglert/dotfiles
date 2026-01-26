@@ -2,25 +2,25 @@
 extensions:
   # Installed to both VS Code and Cursor
   universal:
-    - anthropic.claude-code
-    - bierner.markdown-preview-github-styles
-    - hbenl.vscode-test-explorer
-    - gruntfuggly.todo-tree
-    - mermaidchart.vscode-mermaid-chart
-    - mikestead.dotenv
-    - ms-azuretools.vscode-containers
-    - ms-azuretools.vscode-docker
-    - ms-vscode.makefile-tools
-    - ms-vscode.test-adapter-converter
-    - redhat.vscode-yaml
-    - shopify.ruby-lsp
-    - vue.volar
+    - anthropic.claude-code           # Claude AI coding assistant
+    - bierner.markdown-preview-github-styles  # GitHub-styled markdown preview
+    - hbenl.vscode-test-explorer      # UI for running tests
+    - gruntfuggly.todo-tree           # Tree view for TODO/FIXME comments
+    - mermaidchart.vscode-mermaid-chart  # Mermaid diagram support
+    - mikestead.dotenv                # .env file syntax highlighting
+    - ms-azuretools.vscode-containers # Container management
+    - ms-azuretools.vscode-docker     # Docker support
+    - ms-vscode.makefile-tools        # Makefile support
+    - ms-vscode.test-adapter-converter  # Test adapter for Test Explorer
+    - redhat.vscode-yaml              # YAML language support
+    - shopify.ruby-lsp                # Ruby language server
+    - vue.volar                       # Vue.js language support
 
   # VS Code only
   vscode:
-    - bierner.markdown-emoji
-    - ms-vscode-remote.remote-containers
+    - bierner.markdown-emoji          # Emoji support in markdown
+    - ms-vscode-remote.remote-containers  # Dev containers
 
   # Cursor only
   cursor:
-    - anysphere.remote-containers
+    - anysphere.remote-containers     # Dev containers (Cursor version)
