@@ -7,3 +7,8 @@ export PATH="{{ template "brew-prefix" . }}/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="{{ template "brew-prefix" . }}/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="{{ template "brew-prefix" . }}/opt/grep/libexec/gnubin:$PATH"
 {{- end }}
+
+{{- if .isWorkComputer }}
+# Sendoso oso-cli
+export PATH="$HOME/src/sendoso/oso-cli:$PATH"
+{{- end }}
