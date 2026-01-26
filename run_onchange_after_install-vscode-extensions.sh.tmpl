@@ -2,30 +2,27 @@
 #!/usr/bin/env bash
 set -e
 
-# Extensions list hash: {{ include "dot_config/vscode/extensions.txt" | sha256sum }}
-
-EXTENSIONS_FILE="$HOME/.config/vscode/extensions.txt"
-
-if [[ ! -f "$EXTENSIONS_FILE" ]]; then
-    echo "Extensions file not found: $EXTENSIONS_FILE"
-    exit 0
-fi
+# extensions hash: {{ include ".chezmoidata/code-extensions.yaml" | sha256sum }}
 
 # Install to VS Code if available
 if command -v code &>/dev/null; then
     echo "Installing extensions to VS Code..."
-    while IFS= read -r ext || [[ -n "$ext" ]]; do
-        [[ -z "$ext" ]] && continue
-        code --install-extension "$ext" --force
-    done < "$EXTENSIONS_FILE"
+{{- range .extensions.universal }}
+    code --install-extension "{{ . }}" --force
+{{- end }}
+{{- range .extensions.vscode }}
+    code --install-extension "{{ . }}" --force
+{{- end }}
 fi
 
 # Install to Cursor if available
 if command -v cursor &>/dev/null; then
     echo "Installing extensions to Cursor..."
-    while IFS= read -r ext || [[ -n "$ext" ]]; do
-        [[ -z "$ext" ]] && continue
-        cursor --install-extension "$ext" --force
-    done < "$EXTENSIONS_FILE"
+{{- range .extensions.universal }}
+    cursor --install-extension "{{ . }}" --force
+{{- end }}
+{{- range .extensions.cursor }}
+    cursor --install-extension "{{ . }}" --force
+{{- end }}
 fi
 {{ end -}}

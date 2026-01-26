@@ -1,0 +1,14 @@
+extensions:
+  universal:
+    - anthropic.claude-code
+    - mermaidchart.vscode-mermaid-chart
+    - mikestead.dotenv
+    - ms-azuretools.vscode-containers
+    - ms-azuretools.vscode-docker
+    - ms-vscode-remote.remote-containers
+    - shopify.ruby-lsp
+    - vue.volar
+
+  vscode: []
+
+  cursor: []
