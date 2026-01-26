@@ -9,6 +9,9 @@ export PATH="{{ template "brew-prefix" . }}/opt/grep/libexec/gnubin:$PATH"
 {{- end }}
 
 {{- if .isWorkComputer }}
+# asdf version manager (required by Sendoso oso-cli)
+export PATH="$HOME/.asdf/shims:$PATH"
+
 # Sendoso oso-cli
 export PATH="$HOME/src/sendoso/oso-cli:$PATH"
 {{- end }}

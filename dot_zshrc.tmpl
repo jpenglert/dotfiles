@@ -10,11 +10,6 @@ fi
 [[ ":$PATH:" != *":$HOME/bin:"* ]] && export PATH="$HOME/bin:$PATH"
 [[ ":$PATH:" != *":/usr/local/bin:"* ]] && export PATH="/usr/local/bin:$PATH"
 
-{{- if .isWorkComputer }}
-# asdf version manager (required by Sendoso oso-cli)
-export PATH="$HOME/.asdf/shims:$PATH"
-{{- end }}
-
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
