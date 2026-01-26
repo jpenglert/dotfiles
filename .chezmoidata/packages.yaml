@@ -84,6 +84,15 @@ packages:
       - kubernetes-cli
       - kubectx
 
+      # AWS
+      - awscli
+
+      # Search
+      - fzf
+
+      # Terminal multiplexer
+      - zellij
+
     casks:
       # Java runtime
       - temurin@21
