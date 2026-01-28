@@ -113,3 +113,6 @@ packages:
 
       # Database
       - mongodb-compass
+
+      # API
+      - postman
