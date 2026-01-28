@@ -23,5 +23,6 @@
     "[ruby]": {
         "editor.formatOnSave": false
     },
-    "editor.accessibilitySupport": "on"
+    "editor.accessibilitySupport": "on",
+    "security.workspace.trust.untrustedFiles": "open"
 }
