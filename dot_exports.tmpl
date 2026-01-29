@@ -29,6 +29,9 @@ export MANPAGER='less -X'
 # https://stackoverflow.com/a/42265848/96656
 export GPG_TTY=$(tty)
 
+# Homebrew: auto-update once per day instead of every command
+export HOMEBREW_AUTO_UPDATE_SECS=86400
+
 {{- if eq .chezmoi.os "darwin" }}
 # Ensure JAVA_HOME is set for mvn
 if [[ -x /usr/libexec/java_home ]] && /usr/libexec/java_home &>/dev/null; then
