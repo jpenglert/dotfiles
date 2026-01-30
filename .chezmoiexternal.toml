@@ -18,3 +18,10 @@
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
+
+[".git-fuzzy"]
+    type = "archive"
+    url = "https://github.com/bigH/git-fuzzy/archive/main.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"

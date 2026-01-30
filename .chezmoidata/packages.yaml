@@ -24,6 +24,7 @@ packages:
       # Search/file tools
       - ack
       - bat
+      - fzf
       - tree
       - jq
 
@@ -90,9 +91,6 @@ packages:
 
       # AWS
       - awscli
-
-      # Search
-      - fzf
 
       # Terminal multiplexer
       - zellij
