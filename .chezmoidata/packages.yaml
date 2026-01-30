@@ -23,6 +23,7 @@ packages:
 
       # Search/file tools
       - ack
+      - bat
       - tree
       - jq
 
