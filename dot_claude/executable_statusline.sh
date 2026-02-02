@@ -45,8 +45,9 @@ FG_WHITE=$'\033[97m'
 BOLD=$'\033[1m'
 BLINK=$'\033[5m'
 
-# Powerline separator
-SEP=''
+# Powerline separator and icons
+SEP=""
+BRANCH_ICON=""
 
 # Git info - check status first to determine model background color
 git_segment=""
@@ -80,13 +81,13 @@ if git -C "$cwd" rev-parse --git-dir > /dev/null 2>&1; then
         git_fg=$FG_LTBLUE
         model_bg=$BG_YELLOW
         model_fg=$FG_YELLOW
-        git_content=" $branch $git_status "
+        git_content=" ${BRANCH_ICON} $branch $git_status "
     else
         git_bg=$BG_LTBLUE
         git_fg=$FG_LTBLUE
         model_bg=$BG_GREEN
         model_fg=$FG_GREEN
-        git_content=" $branch "
+        git_content=" ${BRANCH_ICON} $branch "
     fi
     git_segment="${FG_BLUE}${git_bg}${SEP}${FG_BLACK}${git_content}"
     next_fg=$git_fg
