@@ -48,6 +48,7 @@ BLINK=$'\033[5m'
 # Powerline separator and icons
 SEP=""
 BRANCH_ICON=""
+FOLDER_ICON=""
 
 # Git info - check status first to determine model background color
 git_segment=""
@@ -150,7 +151,7 @@ current_datetime=$(date +"%Y/%m/%d %H:%M")
 # Build output with powerline style
 # Model: black on green (clean) or yellow (dirty)
 echo -n "${model_bg}${FG_BLACK}${BOLD} $model ${RESET}"
-echo -n "${model_fg}${BG_BLUE}${SEP}${FG_BLACK}  $dir_name ${RESET}"
+echo -n "${model_fg}${BG_BLUE}${SEP}${FG_WHITE} ${FOLDER_ICON} $dir_name ${RESET}"
 echo -n "$git_segment"
 echo -n "$context_segment"
 echo -n "${next_fg}${RESET}${SEP} ${current_datetime}"
