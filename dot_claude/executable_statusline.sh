@@ -50,7 +50,7 @@ SEP=""
 BRANCH_ICON=""
 FOLDER_ICON=""
 
-# Git info - check status first to determine model background color
+# Git info
 git_segment=""
 model_bg=$BG_GREEN  # default to green
 model_fg=$FG_GREEN
@@ -74,20 +74,14 @@ if git -C "$cwd" rev-parse --git-dir > /dev/null 2>&1; then
     [ "$staged" -gt 0 ] && git_status+="+$staged"
     [ "$modified" -gt 0 ] && git_status+="!$modified"
 
-    # Choose color - light blue for branch, green/yellow for model based on status
-    BG_LTBLUE=$'\033[48;5;75m'
-    FG_LTBLUE=$'\033[38;5;75m'
+    # Choose git segment color based on repo state (like p10k)
     if [ -n "$git_status" ]; then
-        git_bg=$BG_LTBLUE
-        git_fg=$FG_LTBLUE
-        model_bg=$BG_YELLOW
-        model_fg=$FG_YELLOW
+        git_bg=$BG_YELLOW
+        git_fg=$FG_YELLOW
         git_content=" ${BRANCH_ICON} $branch $git_status "
     else
-        git_bg=$BG_LTBLUE
-        git_fg=$FG_LTBLUE
-        model_bg=$BG_GREEN
-        model_fg=$FG_GREEN
+        git_bg=$BG_GREEN
+        git_fg=$FG_GREEN
         git_content=" ${BRANCH_ICON} $branch "
     fi
     git_segment="${FG_BLUE}${git_bg}${SEP}${FG_BLACK}${git_content}"
