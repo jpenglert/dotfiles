@@ -6,7 +6,9 @@ LICENSE-MIT.txt
 README.md
 
 # Source Directories ###########################################################
-.claude/
+.claude/*
+!.claude/CLAUDE.md
+!.claude/statusline.sh
 init/
 
 # External Directories #########################################################

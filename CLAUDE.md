@@ -30,10 +30,28 @@ chezmoi add ~/.newconfig
 ### Chezmoi File Naming Conventions
 
 - `dot_` prefix → becomes `.` (e.g., `dot_zshrc` → `~/.zshrc`)
+- `executable_` prefix → sets executable permissions
 - `private_` prefix → sets restrictive permissions
 - `.tmpl` suffix → processed as Go template with chezmoi data
 - `run_onchange_before_` → scripts that run before applying, re-run when content hash changes
 - `run_onchange_after_` → scripts that run after applying
+
+### Source vs Target Paths
+
+Chezmoi has two path contexts:
+- **Source paths** - Files in this repo (e.g., `dot_claude/executable_statusline.sh`)
+- **Target paths** - Files in the home directory (e.g., `~/.claude/statusline.sh`)
+
+When adding files:
+1. Copy to the appropriate `dot_` directory (use `executable_` prefix if needed)
+2. Update `.chezmoiignore` if the directory is ignored (patterns use **target paths**, not source paths)
+
+### dot_claude/ vs .claude/ directories
+
+This repo contains two similarly-named directories with different purposes:
+
+- **`dot_claude/`** - Chezmoi source directory for `~/.claude/`. Files here get deployed to the home directory. Put managed dotfiles here.
+- **`.claude/`** - Claude Code's local settings for this repo (e.g., `settings.local.json`). This is NOT deployed anywhere; it's chezmoi's own Claude Code configuration.
 
 ### Configuration Flow
 
@@ -91,6 +109,25 @@ Scripts in root with `run_onchange_` prefix execute in alphabetical order:
 3. `02-install-packages` - Installs ~50 packages via brew/cask
 4. `configure-macos` - Applies 100+ macOS system preferences via `defaults write`
 5. `zzz-cleanup` - Cleans up sudo keepalive process
+
+### Ignore File (.chezmoiignore)
+
+The `.chezmoiignore` file controls which files chezmoi manages. **Its syntax differs from `.gitignore`.**
+
+Key rules:
+- Use `.dir/*` (single asterisk) to ignore contents of a directory
+- Use `!.dir/filename` to exclude specific files from being ignored
+- All `!` exclusions take priority over includes
+- Patterns match against **target paths** (e.g., `.claude/`), not source paths (e.g., `dot_claude/`)
+
+Example - ignore a directory but manage specific files:
+```
+.claude/*
+!.claude/CLAUDE.md
+!.claude/statusline.sh
+```
+
+**Do NOT use `**` for this pattern** - it won't work with negations as expected.
 
 ## Directory Structure
 
