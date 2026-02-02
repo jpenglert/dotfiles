@@ -41,6 +41,9 @@ packages:
       - ruby-build
       - rbenv
 
+      # AI tools
+      - gemini-cli
+
     casks:
       # Fonts
       - font-meslo-lg-nerd-font

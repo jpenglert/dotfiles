@@ -6,6 +6,9 @@ eval $({{ template "brew-prefix" . }}/bin/brew shellenv)
 export PATH="{{ template "brew-prefix" . }}/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="{{ template "brew-prefix" . }}/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="{{ template "brew-prefix" . }}/opt/grep/libexec/gnubin:$PATH"
+
+export PATH=~/.local/bin:$PATH
+export PATH=~/.local/share/bin:$PATH
 {{- end }}
 
 {{- if .isWorkComputer }}
