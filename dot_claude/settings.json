@@ -1,0 +1,10 @@
+{
+  "enabledPlugins": {
+    "atlassian@claude-plugins-official": true,
+    "aichat@cctools-plugins": true
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh"
+  }
+}

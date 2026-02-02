@@ -8,6 +8,7 @@ README.md
 # Source Directories ###########################################################
 .claude/*
 !.claude/CLAUDE.md
+!.claude/settings.json
 !.claude/statusline.sh
 init/
 
