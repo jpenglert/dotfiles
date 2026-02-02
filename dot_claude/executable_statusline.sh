@@ -62,17 +62,23 @@ if git -C "$cwd" rev-parse --git-dir > /dev/null 2>&1; then
     status=$(git -C "$cwd" status --porcelain 2>/dev/null)
     staged=$(echo "$status" | grep -c '^[MADRC]')
     modified=$(echo "$status" | grep -c '^.[MD]')
+    untracked=$(echo "$status" | grep -c '^??')
+    conflicted=$(echo "$status" | grep -c '^[UDA][UDA]')
 
-    # Ahead/behind
+    # Ahead/behind and stashes
     ahead=$(git -C "$cwd" rev-list --count @{u}..HEAD 2>/dev/null || echo 0)
     behind=$(git -C "$cwd" rev-list --count HEAD..@{u} 2>/dev/null || echo 0)
+    stashes=$(git -C "$cwd" stash list 2>/dev/null | wc -l | tr -d ' ')
 
-    # Build compact git status (starship style)
+    # Build compact git status (p10k style)
     git_status=""
     [ "$ahead" -gt 0 ] 2>/dev/null && git_status+="⇡$ahead"
     [ "$behind" -gt 0 ] 2>/dev/null && git_status+="⇣$behind"
+    [ "$stashes" -gt 0 ] 2>/dev/null && git_status+="*$stashes"
+    [ "$conflicted" -gt 0 ] && git_status+="~$conflicted"
     [ "$staged" -gt 0 ] && git_status+="+$staged"
     [ "$modified" -gt 0 ] && git_status+="!$modified"
+    [ "$untracked" -gt 0 ] && git_status+="?$untracked"
 
     # Choose git segment color based on repo state (like p10k)
     if [ -n "$git_status" ]; then
