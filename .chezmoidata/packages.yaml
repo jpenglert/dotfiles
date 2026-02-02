@@ -77,12 +77,19 @@ packages:
     taps:
       - atlassian/acli
       - withgraphite/tap
+      - pchalasani/tap
 
     brews:
       # Git tools
       - glab
       - acli
       - withgraphite/tap/graphite
+
+      # Python package manager
+      - uv
+
+      # Claude Code tools
+      - pchalasani/tap/aichat-search
 
       # Java/Maven
       - maven

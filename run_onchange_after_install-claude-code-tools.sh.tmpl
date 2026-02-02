@@ -1,0 +1,11 @@
+{{- if and (eq .chezmoi.os "darwin") .isWorkComputer -}}
+#!/usr/bin/env bash
+set -e
+
+# Install claude-code-tools via uv
+uv tool install claude-code-tools
+
+# Install Claude Code plugins
+claude plugin marketplace add pchalasani/claude-code-tools
+claude plugin install "aichat@cctools-plugins"
+{{ end -}}
