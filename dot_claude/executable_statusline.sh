@@ -52,8 +52,8 @@ FOLDER_ICON=""
 
 # Git info
 git_segment=""
-model_bg=$BG_GREEN  # default to green
-model_fg=$FG_GREEN
+model_bg=$BG_MAGENTA
+model_fg=$FG_MAGENTA
 if git -C "$cwd" rev-parse --git-dir > /dev/null 2>&1; then
     branch=$(git -C "$cwd" branch --show-current 2>/dev/null)
     [ -z "$branch" ] && branch=$(git -C "$cwd" rev-parse --short HEAD 2>/dev/null)
@@ -149,8 +149,7 @@ fi
 current_datetime=$(date +"%Y/%m/%d %H:%M")
 
 # Build output with powerline style
-# Model: black on green (clean) or yellow (dirty)
-echo -n "${model_bg}${FG_BLACK}${BOLD} $model ${RESET}"
+echo -n "${model_bg}${FG_WHITE}${BOLD} 󰚩 $model ${RESET}"
 echo -n "${model_fg}${BG_BLUE}${SEP}${FG_WHITE} ${FOLDER_ICON} $dir_name ${RESET}"
 echo -n "$git_segment"
 echo -n "$context_segment"
