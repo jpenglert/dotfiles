@@ -24,5 +24,6 @@
         "editor.formatOnSave": false
     },
     "editor.accessibilitySupport": "on",
-    "security.workspace.trust.untrustedFiles": "open"
+    "security.workspace.trust.untrustedFiles": "open",
+    "claudeCode.preferredLocation": "panel"
 }
