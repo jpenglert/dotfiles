@@ -7,7 +7,9 @@
         "announcement": "off"
     },
     "accessibility.signalOptions.volume": 0,
+    "claudeCode.preferredLocation": "panel",
     "editor.acceptSuggestionOnEnter": "off",
+    "editor.accessibilitySupport": "on",
     "editor.formatOnSave": true,
     "editor.formatOnSaveMode": "file",
     "editor.minimap.enabled": false,
@@ -21,9 +23,9 @@
     "terminal.external.osxExec": "iTerm.app",
     "terminal.integrated.fontFamily": "MesloLGM Nerd Font Mono",
     "[ruby]": {
+        "editor.defaultFormatter": "Shopify.ruby-lsp",
         "editor.formatOnSave": false
     },
-    "editor.accessibilitySupport": "on",
+    "rubyLsp.formatter": "rubocop",
     "security.workspace.trust.untrustedFiles": "open",
-    "claudeCode.preferredLocation": "panel"
 }
