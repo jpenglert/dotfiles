@@ -105,6 +105,9 @@ packages:
       # Terminal multiplexer
       - zellij
 
+      # Task runner
+      - just
+
     casks:
       # Java runtime
       - temurin@21
