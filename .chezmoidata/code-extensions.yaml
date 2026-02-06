@@ -12,6 +12,7 @@ extensions:
     - ms-azuretools.vscode-docker     # Docker support
     - ms-vscode.makefile-tools        # Makefile support
     - ms-vscode.test-adapter-converter  # Test adapter for Test Explorer
+    - nefrob.vscode-just-syntax       # Just task runner syntax highlighting
     - redhat.vscode-yaml              # YAML language support
     - shopify.ruby-lsp                # Ruby language server
     - vue.volar                       # Vue.js language support
