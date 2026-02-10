@@ -85,6 +85,11 @@ plugins=(git alias-finder docker docker-compose gcloud mvn zsh-syntax-highlighti
 # Run alias-finder plugin before all commands to help discover aliases
 ZSH_ALIAS_FINDER_AUTOMATIC=true
 
+# Init Homebrew, which adds environment variables
+eval "$(brew shellenv)"
+
+fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
+
 source $ZSH/oh-my-zsh.sh
 
 # fzf shell integration (keybindings and completion)

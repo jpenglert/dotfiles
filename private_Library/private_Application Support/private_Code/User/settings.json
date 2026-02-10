@@ -28,4 +28,5 @@
     },
     "rubyLsp.formatter": "rubocop",
     "security.workspace.trust.untrustedFiles": "open",
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
 }
