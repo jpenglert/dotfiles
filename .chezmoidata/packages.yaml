@@ -78,6 +78,7 @@ packages:
       - atlassian/acli
       - withgraphite/tap
       - pchalasani/tap
+      - terror/tap
 
     brews:
       # Git tools
@@ -107,6 +108,7 @@ packages:
 
       # Task runner
       - just
+      - terror/tap/just-lsp
 
     casks:
       # Java runtime
