@@ -20,6 +20,7 @@ extensions:
   # VS Code only
   vscode:
     - bierner.markdown-emoji          # Emoji support in markdown
+    - Google.geminicodeassist         # Gemini AI coding assistant
     - ms-vscode-remote.remote-containers  # Dev containers
 
   # Cursor only
