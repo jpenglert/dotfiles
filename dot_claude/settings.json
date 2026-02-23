@@ -1,10 +1,72 @@
 {
-  "statusLine": {
-    "type": "command",
-    "command": "~/.claude/statusline.sh"
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "attribution": {
+    "commit": ""
   },
   "enabledPlugins": {
     "atlassian@claude-plugins-official": true,
     "aichat@cctools-plugins": true
+  },
+  "permissions": {
+    "additionalDirectories": [
+      "~/src/postal",
+      "~/src/sendoso"
+    ],
+    "allow": [
+      "Bash(ls *)",
+      "Bash(cat *)",
+      "Bash(pwd *)",
+      "Bash(cd *)",
+      "Bash(find *)",
+      "Bash(grep *)",
+      "Bash(acli *)",
+      "Bash(glab *)",
+      "Bash(just *)",
+      "Bash(make *)",
+      "Bash(mvn test *)",
+      "Bash(mvn spotless:apply *)",
+      "Bash(pnpm *)",
+      "Bash(jq *)",
+      "Bash(curl *)",
+      "Bash(echo *)",
+      "Bash(git branch *)",
+      "Bash(git checkout *)",
+      "Bash(git -C ~/src/postal* diff)",
+      "Bash(git -C ~/src/sendoso* diff)",
+      "Bash(git diff)",
+      "Bash(git -C ~/src/postal* log)",
+      "Bash(git -C ~/src/sendoso* log)",
+      "Bash(git log)",
+      "Bash(git -C ~/src/postal* status)",
+      "Bash(git -C ~/src/sendoso* status)",
+      "Bash(git status)",
+      "Bash(done)",
+      "Glob(~/src/postal/**)",
+      "Glob(~/src/sendoso/**)",
+      "mcp__plugin_atlassian_atlassian__getAccessibleAtlassianResources",
+      "mcp__plugin_atlassian_atlassian__getJiraIssue",
+      "Read(~/src/postal/**)",
+      "Read(~/src/sendoso/**)",
+      "Skill(atlassian-acli)",
+      "Skill(dhh-reviewer)",
+      "Skill(fowler-reviewer)",
+      "Skill(gitlab-cli-mr)",
+      "Skill(matz-reviewer)",
+      "Skill(commit-sendoso)",
+      "Skill(sendoso-commit-helper)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:docs.claude.com)",
+      "WebSearch"
+    ],
+    "ask": [
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(git reset *)"
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh"
   }
 }
