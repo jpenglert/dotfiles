@@ -40,6 +40,7 @@ packages:
 
       # Version managers
       - asdf
+      - mise
       - ruby-build
       - rbenv
 
