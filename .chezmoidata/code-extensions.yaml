@@ -5,6 +5,7 @@ extensions:
     - anthropic.claude-code           # Claude AI coding assistant
     - bierner.markdown-preview-github-styles  # GitHub-styled markdown preview
     - hbenl.vscode-test-explorer      # UI for running tests
+    - golang.go                       # golang
     - gruntfuggly.todo-tree           # Tree view for TODO/FIXME comments
     - mermaidchart.vscode-mermaid-chart  # Mermaid diagram support
     - mikestead.dotenv                # .env file syntax highlighting

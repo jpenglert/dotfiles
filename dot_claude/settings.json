@@ -9,14 +9,18 @@
   },
   "permissions": {
     "additionalDirectories": [
+      "~/.local/share/chezmoi",
       "~/src/postal",
       "~/src/sendoso"
     ],
     "allow": [
       "Bash(ls *)",
       "Bash(cat *)",
+      "Bash(tail *)",
       "Bash(pwd *)",
       "Bash(cd *)",
+      "Bash(head *)",
+      "Bash(wc *)",
       "Bash(find *)",
       "Bash(grep *)",
       "Bash(acli *)",
@@ -43,6 +47,10 @@
       "Bash(done)",
       "Glob(~/src/postal/**)",
       "Glob(~/src/sendoso/**)",
+      "mcp__claude_ai_Linear__get_issue",
+      "mcp__claude_ai_Linear__list_issues",
+      "mcp__claude_ai_Linear__list_projects",
+      "mcp__claude_ai_Linear__list_teams",
       "mcp__plugin_atlassian_atlassian__getAccessibleAtlassianResources",
       "mcp__plugin_atlassian_atlassian__getJiraIssue",
       "Read(~/src/postal/**)",
