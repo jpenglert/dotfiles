@@ -1,6 +1,7 @@
 packages:
   universal:
-    taps: []
+    taps:
+      - FelixKratz/formulae
 
     brews:
       # GNU utilities (macOS versions are outdated)
@@ -43,6 +44,9 @@ packages:
       - mise
       - ruby-build
       - rbenv
+
+      # Window management
+      - borders
 
       # AI tools
       - gemini-cli
