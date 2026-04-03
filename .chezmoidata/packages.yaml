@@ -125,7 +125,6 @@ packages:
       # AI tools
       - chatgpt
       - claude
-      - claude-code
 
       # IDEs
       - cursor
