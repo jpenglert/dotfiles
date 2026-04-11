@@ -108,6 +108,9 @@ packages:
       # AWS
       - awscli
 
+      # Infrastructure
+      - opentofu
+
       # Terminal multiplexer
       - zellij
 
