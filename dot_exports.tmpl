@@ -69,3 +69,20 @@ export BUGSNAG_PROJECT_API_KEY=oms-api
 
 # DataDog API Key
 export DD_API_KEY={{ onepasswordRead "op://Sendoso/Datadog - Sendoso/credential" }}
+
+# Claude Code #################################################################
+
+# Fullscreen rendering (https://code.claude.com/docs/en/fullscreen)
+export CLAUDE_CODE_NO_FLICKER=1
+
+# If mouse wheel scrolling feels slow, your terminal may be sending one scroll
+# event per physical notch with no multiplier. Some terminals, like Ghostty
+# and iTerm2 with faster scrolling enabled, already amplify wheel events.
+# Others, including the VS Code integrated terminal, send exactly one event per
+# notch. Claude Code cannot detect which.
+#
+# Set CLAUDE_CODE_SCROLL_SPEED to multiply the base scroll distance:
+#
+# A value of 3 matches the default in vim and similar applications.
+# The setting accepts values from 1 to 20.
+export CLAUDE_CODE_SCROLL_SPEED=3
