@@ -45,6 +45,9 @@ packages:
       - ruby-build
       - rbenv
 
+      # Ruby
+      - rubyfmt
+
       # Window management
       - borders
 
