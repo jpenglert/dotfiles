@@ -3,16 +3,7 @@
   "attribution": {
     "commit": ""
   },
-  "enabledPlugins": {
-    "atlassian@claude-plugins-official": true,
-    "aichat@cctools-plugins": true
-  },
   "permissions": {
-    "additionalDirectories": [
-      "~/.local/share/chezmoi",
-      "~/src/postal",
-      "~/src/sendoso"
-    ],
     "allow": [
       "Bash(ls *)",
       "Bash(cat *)",
@@ -71,10 +62,24 @@
       "Bash(git commit *)",
       "Bash(git push *)",
       "Bash(git reset *)"
+    ],
+    "additionalDirectories": [
+      "~/.local/share/chezmoi",
+      "~/src/postal",
+      "~/src/sendoso"
     ]
   },
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.sh"
-  }
+  },
+  "enabledPlugins": {
+    "plugin-dev@claude-plugins-official": true,
+    "dev@sendoso": true,
+    "ruby-lsp@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true,
+    "ops@sendoso": true,
+    "playground@claude-plugins-official": true
+  },
+  "agentPushNotifEnabled": true
 }
