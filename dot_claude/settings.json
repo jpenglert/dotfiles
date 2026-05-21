@@ -39,20 +39,35 @@
       "Glob(~/src/postal/**)",
       "Glob(~/src/sendoso/**)",
       "mcp__claude_ai_Linear__get_issue",
+      "mcp__claude_ai_Linear__list_comments",
       "mcp__claude_ai_Linear__list_issues",
       "mcp__claude_ai_Linear__list_projects",
       "mcp__claude_ai_Linear__list_teams",
-      "mcp__plugin_atlassian_atlassian__getAccessibleAtlassianResources",
-      "mcp__plugin_atlassian_atlassian__getJiraIssue",
+      "mcp__datadog-mcp__aggregate_events",
+      "mcp__datadog-mcp__check_datadog_mcp_setup",
+      "mcp__datadog-mcp__get_datadog_metric",
+      "mcp__datadog-mcp__list_datadog_skills",
+      "mcp__datadog-mcp__load_datadog_skill",
+      "mcp__datadog-mcp__search_datadog_incidents",
+      "mcp__datadog-mcp__search_datadog_metrics",
+      "mcp__datadog-mcp__search_datadog_monitors",
+      "mcp__datadog-mcp__search_datadog_services",
+      "mcp__notion__notion-fetch",
+      "mcp__notion__notion-get-comments",
+      "mcp__sendoso-internal__describe_resource",
+      "mcp__sendoso-internal__list_resources",
+      "mcp__sendoso-internal__query_resource",
       "Read(~/src/postal/**)",
       "Read(~/src/sendoso/**)",
-      "Skill(atlassian-acli)",
       "Skill(dhh-reviewer)",
       "Skill(fowler-reviewer)",
       "Skill(gitlab-cli-mr)",
       "Skill(matz-reviewer)",
-      "Skill(commit-sendoso)",
-      "Skill(sendoso-commit-helper)",
+      "Skill(dev:git-branch)",
+      "Skill(dev:git-commit)",
+      "Skill(dev:gitlab-mr)",
+      "Skill(dev:start-work)",
+      "Skill(superpowers:systematic-debugging)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:raw.githubusercontent.com)",
       "WebFetch(domain:docs.claude.com)",
@@ -79,7 +94,19 @@
     "ruby-lsp@claude-plugins-official": true,
     "superpowers@claude-plugins-official": true,
     "ops@sendoso": true,
-    "playground@claude-plugins-official": true
+    "playground@claude-plugins-official": true,
+    "rails-upgrade@ombulabs-ai": true,
+    "rails-load-defaults@ombulabs-ai": true,
+    "dual-boot@ombulabs-ai": true,
+    "upgrade-cleanup@ombulabs-ai": true
+  },
+  "extraKnownMarketplaces": {
+    "ombulabs-ai": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/ombulabs/claude-skills.git"
+      }
+    }
   },
   "agentPushNotifEnabled": true
 }
