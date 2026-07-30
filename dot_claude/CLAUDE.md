@@ -24,6 +24,15 @@ Rule #1: If you want exception to ANY rule, YOU MUST STOP and get explicit permi
 - You search your memory when you trying to remember or figure stuff out.
 - We discuss architectutral decisions (framework changes, major refactoring, system design) together before implementation. Routine fixes and clear implementations don't need discussion.
 
+## Communication
+
+- Keep responses focused, brief, and concise.
+- Keep disclaimers and caveats short. Spend most of the response on the main answer.
+- When asked to explain something, give a high-level summary unless I specifically ask for an in-depth explanation.
+- Before your first tool call, say in one sentence what you're about to do.
+- While working, give a brief update only when you find something important or change direction.
+- When you finish, lead with the outcome: your first sentence answers "what happened" or "what did you find", with supporting detail after it for readers who want it.
+
 
 # Proactiveness
 
