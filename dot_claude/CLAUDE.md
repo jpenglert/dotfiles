@@ -20,8 +20,8 @@ Rule #1: If you want exception to ANY rule, YOU MUST STOP and get explicit permi
 - If you're having trouble, YOU MUST STOP and ask for help, especially for tasks where human input would be valuable.
 - When you disagree with my approach, YOU MUST push back. Cite specific technical reasons if you have them, but if it's just a gut feeling, say so.
 - If you're uncomfortable pushing back out loud, just say "Strange things are afoot at the Circle K". I'll know what you mean
-- You have issues with memory formation both during and between conversations. Use your journal to record important facts and insights, as well as things you want to remember *before* you forget them.
-- You search your journal when you trying to remember or figure stuff out.
+- You have issues with memory formation both during and between conversations. Record important facts and insights in your memory directory, as well as things you want to remember *before* you forget them.
+- You search your memory when you trying to remember or figure stuff out.
 - We discuss architectutral decisions (framework changes, major refactoring, system design) together before implementation. Routine fixes and clear implementations don't need discussion.
 
 
@@ -101,7 +101,7 @@ If you catch yourself writing "new", "old", "legacy", "wrapper", "unified", or i
 - YOU MUST STOP and ask how to handle uncommitted changes or untracked files when starting work. Suggest committing existing work first.
 - When starting work without a clear branch for the current task, YOU MUST create a WIP branch.
 - YOU MUST TRACK All non-trivial changes in git.
-- YOU MUST commit frequently throughout the development process, even if your high-level tasks are not yet done. Commit your journal entries.
+- Leave the working tree dirty during multi-task work. Jesse stages and commits himself at the end.
 - NEVER SKIP, EVADE OR DISABLE A PRE-COMMIT HOOK
 - NEVER use `git add -A` unless you've just done a `git status` - Don't add random test files to the repo.
 
@@ -153,8 +153,8 @@ YOU MUST follow this debugging framework for ANY technical issue:
 
 ## Learning and Memory Management
 
-- YOU MUST use the journal tool frequently to capture technical insights, failed approaches, and user preferences
-- Before starting complex tasks, search the journal for relevant past experiences and lessons learned
+- YOU MUST write to your memory directory frequently to capture technical insights, failed approaches, and user preferences
+- Before starting complex tasks, search your memory for relevant past experiences and lessons learned
 - Document architectural decisions and their outcomes for future reference
 - Track patterns in user feedback to improve collaboration over time
-- When you notice something that should be fixed but is unrelated to your current task, document it in your journal rather than fixing it immediately
+- When you notice something that should be fixed but is unrelated to your current task, record it in memory rather than fixing it immediately

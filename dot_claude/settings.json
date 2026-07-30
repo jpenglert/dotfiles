@@ -1,5 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "env": {
+    "GIT_OPTIONAL_LOCKS": "0"
+  },
   "attribution": {
     "commit": ""
   },
@@ -108,11 +111,28 @@
       "Bash(git push *)",
       "Bash(git reset *)"
     ],
+    "defaultMode": "auto",
     "additionalDirectories": [
       "~/.local/share/chezmoi",
       "~/src/postal",
       "~/src/sendoso"
     ]
+  },
+  "model": "opus[1m]",
+  "skillOverrides": {
+    "hyperframes": "off",
+    "hyperframes-cli": "off",
+    "hyperframes-registry": "off",
+    "website-to-hyperframes": "off",
+    "gsap": "off",
+    "codebase-to-course": "off",
+    "find-skills": "off",
+    "grill-me": "off",
+    "beck-reviewer": "off",
+    "guido-reviewer": "off",
+    "atlassian-acli": "off",
+    "gitlab-cli-mr": "off",
+    "sendoso-commit-helper": "off"
   },
   "statusLine": {
     "type": "command",
@@ -123,8 +143,8 @@
     "dev@sendoso": true,
     "ruby-lsp@claude-plugins-official": true,
     "superpowers@claude-plugins-official": true,
-    "ops@sendoso": true,
-    "playground@claude-plugins-official": true,
+    "ops@sendoso": false,
+    "playground@claude-plugins-official": false,
     "rails-upgrade@ombulabs-ai": true,
     "rails-load-defaults@ombulabs-ai": true,
     "dual-boot@ombulabs-ai": true,
@@ -138,5 +158,21 @@
       }
     }
   },
+  "sandbox": {
+    "filesystem": {
+      "allowWrite": [
+        "~/src/sendoso"
+      ]
+    },
+    "excludedCommands": [
+      "git push *",
+      "git fetch *",
+      "git pull *",
+      "git ls-remote *",
+      "git clone *",
+      "glab *"
+    ]
+  },
+  "skipDangerousModePermissionPrompt": true,
   "agentPushNotifEnabled": true
 }
