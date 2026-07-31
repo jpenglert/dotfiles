@@ -117,6 +117,11 @@ done;
 unset file;
 
 {{- if .isWorkComputer }}
+# mise version manager. Activation (rather than shims alone) is what applies
+# env vars from a directory's mise.toml / mise.local.toml, which is how oso
+# worktrees export COMPOSE_PROJECT_NAME, OSO_NETWORK and friends.
+eval "$(mise activate zsh)"
+
 # oso-cli completions (bashcompinit enables bash-style completions in zsh)
 autoload -Uz +X bashcompinit && bashcompinit
 eval "$(oso completions)"

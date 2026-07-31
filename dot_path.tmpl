@@ -21,8 +21,10 @@ export PATH="$HOME/.lmstudio/bin:$PATH"
 {{- end }}
 
 {{- if .isWorkComputer }}
-# asdf version manager (required by Sendoso oso-cli)
-export PATH="$HOME/.asdf/shims:$PATH"
+# mise shims, for processes that never source .zshrc (Dock-launched apps,
+# LaunchAgents). Interactive shells get the richer `mise activate` in .zshrc,
+# which also applies env vars from mise.toml / mise.local.toml.
+export PATH="$HOME/.local/share/mise/shims:$PATH"
 
 # Sendoso oso-cli
 export PATH="$HOME/src/sendoso/oso-cli:$PATH"
