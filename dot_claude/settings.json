@@ -46,8 +46,6 @@
       "Bash(git -C ~/src/postal* status)",
       "Bash(git -C ~/src/sendoso* status)",
       "Bash(done)",
-      "Glob(~/src/postal/**)",
-      "Glob(~/src/sendoso/**)",
       "mcp__claude_ai_Datadog__aggregate_spans",
       "mcp__claude_ai_Linear__get_issue",
       "mcp__claude_ai_Linear__get_project",
