@@ -83,16 +83,12 @@ packages:
 
   work:
     taps:
-      - atlassian/acli
-      - withgraphite/tap
       - pchalasani/tap
       - terror/tap
 
     brews:
       # Git tools
       - glab
-      - acli
-      - withgraphite/tap/graphite
 
       # Python package manager
       - uv
