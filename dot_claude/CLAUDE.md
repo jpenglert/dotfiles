@@ -136,6 +136,23 @@ For ANY technical issue, use the superpowers:systematic-debugging skill. Two rul
 - Before starting complex tasks, search your memory for relevant past experiences and lessons learned
 - When you notice something that should be fixed but is unrelated to your current task, record it in memory rather than fixing it immediately
 
+## Knowledge Base
+
+Our shared knowledge base lives at `~/src/knowledge`. It is a local git repo, deliberately outside every product repo, and nothing in it is ever committed to a product repo.
+
+**What goes there:** long-form documents that outlive a conversation but don't belong in a codebase — planning docs, roadmaps, research findings, analysis writeups, project state, prompts written for other models or agents, and durable notes from our conversations.
+
+**What does not go there:** code, docs that belong to a product repo, and your per-conversation memory. Memory stays at its harness-assigned path; it holds short recall-oriented facts, while the knowledge base holds the long-form documents those facts point at. Cross-link the two — a memory entry should name the knowledge base document it summarizes.
+
+**Format:** [Open Knowledge Format v0.2](file:///Users/jenglert/src/knowledge/references/okf-spec.md). Read `~/src/knowledge/references/okf-spec.md` before authoring. The rules that matter: every `.md` file except `index.md` and `log.md` opens with YAML frontmatter carrying a non-empty `type`; `index.md` and `log.md` are reserved.
+
+**Working with it:**
+- Read `~/src/knowledge/index.md` first to see what already exists. Update an existing document rather than starting a parallel one.
+- When you add or move a document, update the containing `index.md` and append to `log.md`.
+- Use `generated: { by: claude-code/<model>, at: <ISO 8601> }`. Only add `verified: { by: human:jenglert, ... }` when Jesse has actually confirmed the content — never assume his sign-off.
+- Mark work-in-progress with `status: draft`.
+- Unlike product repos, commit your own changes here. Jesse isn't reviewing these as MRs, and the history is the point.
+
 <tone_preference>
 Keep outputs reasonably concise.
 </tone_preference>

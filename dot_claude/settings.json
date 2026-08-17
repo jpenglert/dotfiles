@@ -112,6 +112,7 @@
     "defaultMode": "auto",
     "additionalDirectories": [
       "~/.local/share/chezmoi",
+      "~/src/knowledge",
       "~/src/postal",
       "~/src/sendoso"
     ]
@@ -159,6 +160,7 @@
   "sandbox": {
     "filesystem": {
       "allowWrite": [
+        "~/src/knowledge",
         "~/src/sendoso"
       ]
     },
