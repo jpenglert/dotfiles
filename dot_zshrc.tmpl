@@ -88,15 +88,18 @@ ZSH_ALIAS_FINDER_AUTOMATIC=true
 # Enable spelling correction for commands only
 setopt correct
 
-# Init Homebrew, which adds environment variables
-eval "$(brew shellenv)"
-
-fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
+{{- if eq .chezmoi.os "darwin" }}
+# Initialize Homebrew before using its commands. ~/.path is sourced later.
+if [[ -x "{{ template "brew-prefix" . }}/bin/brew" ]]; then
+  eval "$("{{ template "brew-prefix" . }}/bin/brew" shellenv)"
+  fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
+fi
+{{- end }}
 
 source $ZSH/oh-my-zsh.sh
 
 # fzf shell integration (keybindings and completion)
-source <(fzf --zsh)
+(( $+commands[fzf] )) && source <(fzf --zsh)
 
 # User configuration
 
