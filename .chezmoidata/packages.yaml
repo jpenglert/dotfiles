@@ -85,7 +85,7 @@ packages:
       - fork
 
       # Knowledge management
-      - logseq
+      - logseq-og
 
   work:
     taps:

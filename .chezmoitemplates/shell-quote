@@ -1,0 +1,1 @@
+{{- output "/bin/bash" "-c" "printf '%q' \"$1\"" "--" . -}}

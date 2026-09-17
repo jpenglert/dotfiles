@@ -64,6 +64,16 @@ This repo contains two similarly named directories with different purposes:
 - **`.chezmoi.toml.tmpl`** - Chezmoi configuration with user prompts and 1Password integration
 - **`.chezmoiexternal.toml`** - External dependencies (oh-my-zsh framework, powerlevel10k theme, zsh-syntax-highlighting)
 - **`.chezmoitemplates/brew-prefix`** - Template partial for detecting Homebrew path (ARM64 vs Intel)
+- **`.chezmoitemplates/global-agent-instructions`** - Canonical shared instructions for global coding agents
+
+### Global Agent Instructions
+
+Chezmoi templates generate the native global instruction files for Codex and Claude Code:
+
+- `dot_codex/AGENTS.md.tmpl` → `~/.codex/AGENTS.md`
+- `dot_claude/CLAUDE.md.tmpl` → `~/.claude/CLAUDE.md`
+
+Both render `.chezmoitemplates/global-agent-instructions`, then append only the instructions specific to that agent. Edit the shared partial for common behavior; do not edit the generated files in the home directory.
 
 ### Shell Stack
 

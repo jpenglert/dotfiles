@@ -1,3 +1,6 @@
+## Keep PATH entries unique when this file is sourced more than once.
+typeset -U path PATH
+
 {{- if eq .chezmoi.os "darwin" }}
 # Add brew to path
 eval $({{ template "brew-prefix" . }}/bin/brew shellenv)
