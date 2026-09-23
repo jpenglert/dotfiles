@@ -1,4 +1,10 @@
 # Ghostty configuration. Reference: `ghostty +show-config --default --docs`
 
+font-family = MesloLGM Nerd Font Mono
+font-size = 13
+
 # Lines scrolled per mouse-wheel notch (discrete) and trackpad scale (precision).
 mouse-scroll-multiplier = precision:1,discrete:1
+
+# Left Option acts as Alt (shell word jumps, Alt keybinds); right Option still types special characters.
+macos-option-as-alt = left
