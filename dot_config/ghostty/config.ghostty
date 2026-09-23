@@ -1,0 +1,4 @@
+# Ghostty configuration. Reference: `ghostty +show-config --default --docs`
+
+# Lines scrolled per mouse-wheel notch (discrete) and trackpad scale (precision).
+mouse-scroll-multiplier = precision:1,discrete:1
