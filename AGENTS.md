@@ -114,11 +114,9 @@ Secrets are retrieved via chezmoi's 1Password integration using `onepasswordRead
 
 Scripts in the root with a `run_onchange_` prefix execute in alphabetical order:
 
-1. `00-sudo-keepalive` - Maintains the sudo session during installation
-2. `01-install-homebrew` - Installs Homebrew if missing
-3. `02-install-packages` - Installs ~50 packages via brew/cask
-4. `configure-macos` - Applies 100+ macOS system preferences via `defaults write`
-5. `zzz-cleanup` - Cleans up the sudo keepalive process
+1. `01-install-homebrew` - Installs Homebrew if missing
+2. `02-install-packages` - Installs ~50 packages via brew/cask
+3. `configure-macos` - Applies 100+ macOS system preferences via `defaults write`
 
 ### Ignore File (.chezmoiignore)
 

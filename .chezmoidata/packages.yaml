@@ -54,6 +54,9 @@ packages:
       # Window management
       - borders
 
+      # Terminal
+      - herdr
+
       # AI tools
       - gemini-cli
 
@@ -69,6 +72,7 @@ packages:
 
       # Terminal
       - iterm2
+      - ghostty
 
       # Window management
       - rectangle
@@ -89,8 +93,6 @@ packages:
 
   work:
     taps:
-      - pchalasani/tap
-      - terror/tap
 
     brews:
       # Git tools
@@ -98,9 +100,6 @@ packages:
 
       # Python package manager
       - uv
-
-      # Claude Code tools
-      - pchalasani/tap/aichat-search
 
       # Java/Maven
       - maven
@@ -121,7 +120,7 @@ packages:
 
       # Task runner
       - just
-      - terror/tap/just-lsp
+      - just-lsp
 
     casks:
       # Java runtime
