@@ -6,5 +6,10 @@ font-size = 13
 # Lines scrolled per mouse-wheel notch (discrete) and trackpad scale (precision).
 mouse-scroll-multiplier = precision:1,discrete:1
 
-# Left Option acts as Alt (shell word jumps, Alt keybinds); right Option still types special characters.
-macos-option-as-alt = left
+# Option acts as Alt (shell word jumps, Alt keybinds) instead of typing special characters.
+macos-option-as-alt = true
+
+# Cmd+Option+] / [ switch to the next / previous herdr agent by sending the
+# ctrl+alt+n / ctrl+alt+p sequences bound in herdr's config.toml.
+keybind = super+alt+]=text:\x1b\x0e
+keybind = super+alt+[=text:\x1b\x10

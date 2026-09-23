@@ -1,0 +1,15 @@
+onboarding = false
+
+[ui.toast]
+delivery = "system"
+
+[theme]
+name = "one-dark"
+auto_switch = false
+
+[ui.sound]
+enabled = true
+
+[keys]
+next_agent = "ctrl+alt+n"
+previous_agent = "ctrl+alt+p"
