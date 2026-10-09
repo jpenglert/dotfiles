@@ -129,7 +129,8 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "~/.claude/statusline.sh"
+    "command": "HERDR_PLUGIN_STATE_DIR='{{ .chezmoi.homeDir }}/.local/state/herdr/plugins/herdr-agent-usage' '{{ .chezmoi.homeDir }}/.local/share/herdr-agent-usage/target/release/herdr-agent-usage' claude-statusline",
+    "refreshInterval": 60
   },
   "enabledPlugins": {
     "plugin-dev@claude-plugins-official": true,
@@ -168,5 +169,19 @@
     ]
   },
   "skipDangerousModePermissionPrompt": true,
-  "agentPushNotifEnabled": true
+  "agentPushNotifEnabled": true,
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "^(startup|resume|clear|compact|fork)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '{{ .chezmoi.homeDir }}/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
 }

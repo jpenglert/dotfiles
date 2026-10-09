@@ -25,3 +25,12 @@
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
+
+# Herdr plugin, pinned to a main commit: v1.6.2 predates the herdr-agent-usage
+# plugin id. Built and linked by run_onchange_after_install-herdr-agent-usage;
+# keep the commit in sync with that script.
+# Not exact: the cargo build output in target/ must survive refreshes.
+[".local/share/herdr-agent-usage"]
+    type = "archive"
+    url = "https://github.com/levi-qiao/herdr-agent-usage/archive/4b338b9bf86e880f6d5e1813495e4f878cbbacac.tar.gz"
+    stripComponents = 1

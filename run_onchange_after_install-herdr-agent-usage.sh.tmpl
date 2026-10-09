@@ -1,0 +1,34 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/usr/bin/env bash
+# Build and link the herdr-agent-usage plugin from the chezmoi external.
+# Its configure step edits ~/.claude/settings.json, ~/.config/herdr/config.toml,
+# and ~/.config/ghostty/config.ghostty; those edits are already in the chezmoi
+# sources, so configure finds them in place and leaves the files unchanged.
+# external hash: {{ include ".chezmoiexternal.toml" | sha256sum }}
+set -euo pipefail
+
+eval "$({{ template "brew-prefix" . }}/bin/brew shellenv)"
+export PATH="{{ template "brew-prefix" . }}/opt/rustup/bin:$PATH"
+
+PLUGIN_ROOT="$HOME/.local/share/herdr-agent-usage"
+STATE_DIR="$HOME/.local/state/herdr/plugins/herdr-agent-usage"
+
+# The managed settings.json already routes statusLine through the plugin, so
+# configure never records the statusLine it wraps. Record it here; without
+# this backup the plugin has no ~/.claude/statusline.sh to chain to.
+mkdir -p "$STATE_DIR"
+if [[ ! -f "$STATE_DIR/claude-statusline.original.json" ]]; then
+  printf '%s\n' '{"type":"command","command":"~/.claude/statusline.sh"}' \
+    > "$STATE_DIR/claude-statusline.original.json"
+fi
+
+# Compact sidebar: related fields share a row, no gap between agents, and no
+# 30-day window (only Cursor reports one).
+"$PLUGIN_ROOT/install.sh" --agent claude,codex,cursor \
+  --sidebar-layout packed --row-gap 0 \
+  --fields model,context,5h,7d
+
+for agent in claude codex cursor; do
+  herdr integration install "$agent"
+done
+{{ end -}}

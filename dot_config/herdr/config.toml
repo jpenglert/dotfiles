@@ -1,5 +1,8 @@
 onboarding = false
 
+[ui]
+agent_panel_sort = "spaces" # herdr-agent-usage
+
 [ui.toast]
 delivery = "system"
 
@@ -10,9 +13,55 @@ auto_switch = false
 [ui.sound]
 enabled = true
 
+[ui.sidebar]
+
+[ui.sidebar.agents]
+row_gap = 0 # herdr-agent-usage
+rows = [[{ token = "$quota_group", bold = true, dim = false }], [{ token = "$quota_icon", fg = "#e9e9f0", bold = false, dim = false, rules = [{ contains = "⁠", fg = "#94e2d5" }, { contains = "⁡", fg = "#f9e2af" }] }, { token = "$quota_model", bold = false, dim = false }], [{ token = "$quota_error", fg = "#e4b957", bold = false, dim = false }], [{ token = "$quota_context", bold = false, dim = false }, { token = "$quota_week_inline_normal", fg = "#82d978", bold = false, dim = false }, { token = "$quota_week_inline_warning", fg = "#e4b957", bold = false, dim = false }, { token = "$quota_week_inline_danger", fg = "#f16f7e", bold = false, dim = false }, { token = "$quota_week_inline_unknown", bold = false, dim = false }], [{ token = "$quota_5h_normal", fg = "#82d978", bold = false, dim = false }, { token = "$quota_5h_warning", fg = "#e4b957", bold = false, dim = false }, { token = "$quota_5h_danger", fg = "#f16f7e", bold = false, dim = false }, { token = "$quota_5h_unknown", bold = false, dim = false }, { token = "$quota_week_normal", fg = "#82d978", bold = false, dim = false }, { token = "$quota_week_warning", fg = "#e4b957", bold = false, dim = false }, { token = "$quota_week_danger", fg = "#f16f7e", bold = false, dim = false }, { token = "$quota_week_unknown", bold = false, dim = false }], [{ token = "$quota_nest_gap", bold = false, dim = false }]] # herdr-agent-usage-row
+
+# The plugin-managed rows above, with context moved onto the model line.
+# herdr-agent-usage configure rewrites only rows it marks, so these stay.
+[ui.sidebar.agents.rows_by_agent]
+claude = [
+  [{ token = "$quota_group", bold = true, dim = false }],
+  [{ token = "$quota_icon", fg = "#e9e9f0", bold = false, dim = false, rules = [{ contains = "\u2060", fg = "#94e2d5" }, { contains = "\u2061", fg = "#f9e2af" }] }, { token = "$quota_model", bold = false, dim = false }, { token = "$quota_context", bold = false, dim = false }],
+  [{ token = "$quota_error", fg = "#e4b957", bold = false, dim = false }],
+  [{ token = "$quota_week_inline_normal", fg = "#82d978", bold = false, dim = false }, { token = "$quota_week_inline_warning", fg = "#e4b957", bold = false, dim = false }, { token = "$quota_week_inline_danger", fg = "#f16f7e", bold = false, dim = false }, { token = "$quota_week_inline_unknown", bold = false, dim = false }],
+  [{ token = "$quota_5h_normal", fg = "#82d978", bold = false, dim = false }, { token = "$quota_5h_warning", fg = "#e4b957", bold = false, dim = false }, { token = "$quota_5h_danger", fg = "#f16f7e", bold = false, dim = false }, { token = "$quota_5h_unknown", bold = false, dim = false }, { token = "$quota_week_normal", fg = "#82d978", bold = false, dim = false }, { token = "$quota_week_warning", fg = "#e4b957", bold = false, dim = false }, { token = "$quota_week_danger", fg = "#f16f7e", bold = false, dim = false }, { token = "$quota_week_unknown", bold = false, dim = false }],
+  [{ token = "$quota_nest_gap", bold = false, dim = false }],
+]
+codex = [
+  [{ token = "$quota_group", bold = true, dim = false }],
+  [{ token = "$quota_icon", fg = "#e9e9f0", bold = false, dim = false, rules = [{ contains = "\u2060", fg = "#94e2d5" }, { contains = "\u2061", fg = "#f9e2af" }] }, { token = "$quota_model", bold = false, dim = false }, { token = "$quota_context", bold = false, dim = false }],
+  [{ token = "$quota_error", fg = "#e4b957", bold = false, dim = false }],
+  [{ token = "$quota_week_inline_normal", fg = "#82d978", bold = false, dim = false }, { token = "$quota_week_inline_warning", fg = "#e4b957", bold = false, dim = false }, { token = "$quota_week_inline_danger", fg = "#f16f7e", bold = false, dim = false }, { token = "$quota_week_inline_unknown", bold = false, dim = false }],
+  [{ token = "$quota_5h_normal", fg = "#82d978", bold = false, dim = false }, { token = "$quota_5h_warning", fg = "#e4b957", bold = false, dim = false }, { token = "$quota_5h_danger", fg = "#f16f7e", bold = false, dim = false }, { token = "$quota_5h_unknown", bold = false, dim = false }, { token = "$quota_week_normal", fg = "#82d978", bold = false, dim = false }, { token = "$quota_week_warning", fg = "#e4b957", bold = false, dim = false }, { token = "$quota_week_danger", fg = "#f16f7e", bold = false, dim = false }, { token = "$quota_week_unknown", bold = false, dim = false }],
+  [{ token = "$quota_nest_gap", bold = false, dim = false }],
+]
+cursor = [
+  [{ token = "$quota_group", bold = true, dim = false }],
+  [{ token = "$quota_icon", fg = "#e9e9f0", bold = false, dim = false, rules = [{ contains = "\u2060", fg = "#94e2d5" }, { contains = "\u2061", fg = "#f9e2af" }] }, { token = "$quota_model", bold = false, dim = false }, { token = "$quota_context", bold = false, dim = false }],
+  [{ token = "$quota_error", fg = "#e4b957", bold = false, dim = false }],
+  [{ token = "$quota_week_inline_normal", fg = "#82d978", bold = false, dim = false }, { token = "$quota_week_inline_warning", fg = "#e4b957", bold = false, dim = false }, { token = "$quota_week_inline_danger", fg = "#f16f7e", bold = false, dim = false }, { token = "$quota_week_inline_unknown", bold = false, dim = false }],
+  [{ token = "$quota_5h_normal", fg = "#82d978", bold = false, dim = false }, { token = "$quota_5h_warning", fg = "#e4b957", bold = false, dim = false }, { token = "$quota_5h_danger", fg = "#f16f7e", bold = false, dim = false }, { token = "$quota_5h_unknown", bold = false, dim = false }, { token = "$quota_week_normal", fg = "#82d978", bold = false, dim = false }, { token = "$quota_week_warning", fg = "#e4b957", bold = false, dim = false }, { token = "$quota_week_danger", fg = "#f16f7e", bold = false, dim = false }, { token = "$quota_week_unknown", bold = false, dim = false }],
+  [{ token = "$quota_nest_gap", bold = false, dim = false }],
+]
+
 [keys]
 next_agent = "ctrl+alt+n"
 previous_agent = "ctrl+alt+p"
+
+[[keys.command]]
+key = "prefix+shift+u"
+type = "plugin_action"
+command = "herdr-agent-usage.refresh"
+description = "refresh all agent quotas"
+
+[[keys.command]]
+key = "prefix+shift+q"
+type = "plugin_action"
+command = "herdr-agent-usage.open-settings"
+description = "open agent quota settings"
 
 # reviewr: split the focused pane and open the diff review beside it, or close
 # it again (reviewr's toggle_placement defaults to a right split).
