@@ -141,3 +141,4 @@ packages:
 
       # API
       - postman
+      - insomnia
