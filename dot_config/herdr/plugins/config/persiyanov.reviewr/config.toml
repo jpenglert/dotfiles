@@ -1,0 +1,3 @@
+# reviewr's own config; herdr's config.toml settings never reach it.
+# Open reviewr in its own tab rather than a split beside the agent.
+toggle_placement = "tab"
