@@ -1,0 +1,11 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/usr/bin/env bash
+# Install the herdr-plus plugin. Its build compiles the pinned source with Go
+# (installed by 02-install-packages), falling back to the latest prebuilt
+# release. Reinstalling replaces the existing install; bump the ref to upgrade.
+set -euo pipefail
+
+eval "$({{ template "brew-prefix" . }}/bin/brew shellenv)"
+
+herdr plugin install cloudmanic/herdr-plus --ref v0.1.24 --yes
+{{ end -}}
