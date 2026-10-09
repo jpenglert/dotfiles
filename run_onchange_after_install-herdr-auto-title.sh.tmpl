@@ -1,0 +1,15 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/usr/bin/env bash
+# Install the herdr-auto-title plugin, built from source with Go (installed by
+# 02-install-packages). Herdr launches plugins only when its server starts, so
+# restart the plugin to run the new build now. Reinstalling replaces the
+# existing install; bump the ref to upgrade.
+set -euo pipefail
+
+eval "$({{ template "brew-prefix" . }}/bin/brew shellenv)"
+
+herdr plugin install kryptamine/herdr-auto-title --ref v0.10.0 --yes
+# No running herdr server (e.g. a fresh machine): it starts the plugin itself.
+herdr plugin action invoke herdr.auto-title.restart ||
+  echo "herdr-auto-title: not restarted; it starts with the next herdr server" >&2
+{{ end -}}
