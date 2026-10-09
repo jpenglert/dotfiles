@@ -110,7 +110,7 @@
       "~/src/sendoso"
     ]
   },
-  "model": "opus[1m]",
+  "model": "opus",
   "skillOverrides": {
     "hyperframes": "off",
     "hyperframes-cli": "off",
@@ -151,20 +151,65 @@
       }
     }
   },
+{{- if .isWorkComputer }}
+  "autoMode": {
+    "allow": [
+      "$defaults",
+      "Bash(glab mr view:*)",
+      "Bash(glab mr list:*)"
+    ],
+    "soft_deny": [
+      "$defaults",
+      "Bash(rmdir:*)"
+    ],
+    "environment": [
+      "### Org-wide",
+      "**Organization**: Sendoso (gitlab.com:sendoso/ namespace)",
+      "**Cloud provider(s)**: None configured",
+      "**Repository visibility**: Not queryable here (origin is gitlab.com, not github.com — gh check unavailable); assume private (Sendoso proprietary application, no public-visibility signal found)",
+      "**Internal sharing / snippet hosting**: None configured — treat public paste/gist services as outside the trust boundary",
+      "**Secrets management**: config/credentials.yml.enc (Rails encrypted credentials); config/master.key kept out of git via .gitignore",
+      "**Default / protected branches**: main (default branch); protection status not queryable here (gh unavailable for this host)",
+      "**CI/CD deploy targets**: None configured",
+      "**Network posture**: None configured",
+      "**Source control**: gitlab.com:sendoso/sendoso.git (this repo's origin) only — no additional orgs configured",
+      "**Trusted internal domains**: gitlab.com/sendoso (this repo's remote host/namespace)",
+      "**Trusted cloud buckets**: None configured",
+      "**Key internal services**: None configured",
+      "**Internal package registry**: GitLab package registry at gitlab.com/sendoso (per README: private gems and node modules)",
+      "**Sensitive data locations & audiences**: PII and secrets-handling code paths in this repo — app/models/pii_request.rb, app/models/secret.rb, lib/sendoso/pii_end_of_line_service.rb, lib/sendoso/pii_observability_service.rb, lib/sendoso/pii_pipeline_service.rb, lib/sendoso/pii_s3_service.rb, lib/print_verify_secrets.rb, lib/verify_secrets.rb, config/credentials.yml.enc, app/admin/pii_requests.rb, app/admin/secrets.rb, app/models/eloqua_app_installation_credential.rb, app/models/marketo_credential.rb, app/models/ip_allowlist_entry.rb; also .env* files (.env, .env.constants, .env.local.example, .env.test, e2e/.env, e2e/.env.dev) — share only with audiences cleared at the named+specifics bar",
+      "**Data retention / declassification**: None configured",
+      "**Sensitive remote targets**: any namespace, host, or container whose name carries `prod` or `production` as a whole word or name segment; repo evidence shows app/jobs/topps_cancel_non_prod_orders_job.rb referencing prod order handling",
+      "**Protected deployment namespaces / environments**: None configured — fall back to the Sensitive remote targets heuristic; note k8s namespaces seen in this project's usage are non-prod (app, load, spec)",
+      "**Protected IaC scopes**: IAM, RBAC, networking, quota, and node-pool resources; anything whose name or tag carries `prod` or `production` as a whole word or name segment; platform/helm/helmwave.yml.tpl and platform/helm/v2/helmwave.yml.tpl are Helm deploy configs in this repo worth treating as IaC-adjacent",
+      "### User-specific",
+      "**Primary use of Claude Code**: software development (Rails application upgrade work on Sendoso's core app)",
+      "**Trusted repo**: /Users/jenglert/src/sendoso/sendoso-rails-upgrade and its origin remote gitlab.com:sendoso/sendoso.git — assumed private; confidential material OK to commit here, but content ported from outside this repo is not this repo's own work",
+      "**Org-specific CLIs**: oso-cli (\"oso\" — Sendoso's Docker/dev environment tool, per README and heavy shell-history use); glab (GitLab CLI, used in this project's transcripts and shell history)",
+      "routine under sendoso/ prefix: git and glab operations against gitlab.com:sendoso/sendoso.git"
+    ]
+  },
+{{- end }}
   "sandbox": {
     "filesystem": {
       "allowWrite": [
         "~/src/knowledge",
-        "~/src/sendoso"
+        "~/src/sendoso",
+        "~/src/postal"
       ]
     },
     "excludedCommands": [
-      "git push *",
-      "git fetch *",
-      "git pull *",
-      "git ls-remote *",
+      "docker *",
+      "docker compose *",
+      "git checkout *",
       "git clone *",
-      "glab *"
+      "git fetch *",
+      "git ls-remote *",
+      "git pull *",
+      "git push *",
+      "git switch *",
+      "glab *",
+      "just *"
     ]
   },
   "skipDangerousModePermissionPrompt": true,
