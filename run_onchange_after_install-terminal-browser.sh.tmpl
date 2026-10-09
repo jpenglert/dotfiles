@@ -1,0 +1,14 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/usr/bin/env bash
+# Install the terminal-browser herdr plugin. Its build step runs the upstream
+# installer (https://terminal-browser.sh/install), which puts the app in
+# ~/.local/share/terminal-browser, a launcher in ~/.local/bin, and links its
+# agent skill into ~/.claude, ~/.codex, ~/.cursor, ~/.gemini, and ~/.agents.
+# That installer always fetches the latest stable release, so the ref pins
+# only the plugin; bump it to re-run this script.
+set -euo pipefail
+
+eval "$({{ template "brew-prefix" . }}/bin/brew shellenv)"
+
+herdr plugin install zenbu-labs/terminal-browser/herdr-plugin --ref v0.11.1 --yes
+{{ end -}}
