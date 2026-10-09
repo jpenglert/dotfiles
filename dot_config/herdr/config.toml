@@ -15,6 +15,13 @@ enabled = true
 
 [ui.sidebar]
 
+# The default Space rows plus $flag, which prefix+m toggles (flag-workspace.sh).
+[ui.sidebar.spaces]
+rows = [
+  ["state_icon", "workspace", { token = "$flag", fg = "#f16f7e", bold = true }],
+  ["branch", "git_status"],
+]
+
 [ui.sidebar.agents]
 row_gap = 0 # herdr-agent-usage
 rows = [[{ token = "$quota_group", bold = true, dim = false }], [{ token = "$quota_icon", fg = "#e9e9f0", bold = false, dim = false, rules = [{ contains = "⁠", fg = "#94e2d5" }, { contains = "⁡", fg = "#f9e2af" }] }, { token = "$quota_model", bold = false, dim = false }], [{ token = "$quota_error", fg = "#e4b957", bold = false, dim = false }], [{ token = "$quota_context", bold = false, dim = false }, { token = "$quota_week_inline_normal", fg = "#82d978", bold = false, dim = false }, { token = "$quota_week_inline_warning", fg = "#e4b957", bold = false, dim = false }, { token = "$quota_week_inline_danger", fg = "#f16f7e", bold = false, dim = false }, { token = "$quota_week_inline_unknown", bold = false, dim = false }], [{ token = "$quota_5h_normal", fg = "#82d978", bold = false, dim = false }, { token = "$quota_5h_warning", fg = "#e4b957", bold = false, dim = false }, { token = "$quota_5h_danger", fg = "#f16f7e", bold = false, dim = false }, { token = "$quota_5h_unknown", bold = false, dim = false }, { token = "$quota_week_normal", fg = "#82d978", bold = false, dim = false }, { token = "$quota_week_warning", fg = "#e4b957", bold = false, dim = false }, { token = "$quota_week_danger", fg = "#f16f7e", bold = false, dim = false }, { token = "$quota_week_unknown", bold = false, dim = false }], [{ token = "$quota_nest_gap", bold = false, dim = false }]] # herdr-agent-usage-row
@@ -71,3 +78,11 @@ key = "prefix+shift+v"
 type = "shell"
 command = "\"$HOME/.config/herdr/reviewr-tab.sh\""
 description = "toggle reviewr in its own tab"
+
+# Flag the current workspace so it stands out in the sidebar until you clear
+# it; press again to clear.
+[[keys.command]]
+key = "prefix+m"
+type = "shell"
+command = "\"$HOME/.config/herdr/flag-workspace.sh\""
+description = "flag or unflag this workspace"
