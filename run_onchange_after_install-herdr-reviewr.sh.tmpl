@@ -1,0 +1,10 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/usr/bin/env bash
+# Install the herdr-reviewr plugin (prebuilt release binary). Reinstalling
+# replaces the existing install in place; bump the ref to upgrade.
+set -euo pipefail
+
+eval "$({{ template "brew-prefix" . }}/bin/brew shellenv)"
+
+herdr plugin install persiyanov/herdr-reviewr --ref v0.39.0 --yes
+{{ end -}}
