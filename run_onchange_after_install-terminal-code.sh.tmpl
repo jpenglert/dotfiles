@@ -1,0 +1,12 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/usr/bin/env bash
+# Install the terminal-code herdr plugin. Its build step runs the upstream
+# installer (https://tode.sh/install), which puts tode in ~/.local/lib/tode and
+# ~/.local/bin/tode. That installer always fetches the latest stable tode, so
+# the ref pins only the plugin; bump it to re-run this script.
+set -euo pipefail
+
+eval "$({{ template "brew-prefix" . }}/bin/brew shellenv)"
+
+herdr plugin install zenbu-labs/terminal-code/herdr-plugin --ref v0.3.4 --yes
+{{ end -}}
