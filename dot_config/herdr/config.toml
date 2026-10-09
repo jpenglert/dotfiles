@@ -13,3 +13,11 @@ enabled = true
 [keys]
 next_agent = "ctrl+alt+n"
 previous_agent = "ctrl+alt+p"
+
+# reviewr: split the focused pane and open the diff review beside it, or close
+# it again (reviewr's toggle_placement defaults to a right split).
+[[keys.command]]
+key = "prefix+shift+v"
+type = "plugin_action"
+command = "persiyanov.reviewr.toggle"
+description = "toggle reviewr beside this pane"
