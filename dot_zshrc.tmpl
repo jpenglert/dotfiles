@@ -97,6 +97,12 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
+# Keep each shell's history to itself while it runs (oh-my-zsh enables
+# share_history). Commands are still appended to $HISTFILE as they run, so
+# new shells start with the history of every earlier one.
+unsetopt share_history
+setopt inc_append_history
+
 # fzf shell integration (keybindings and completion)
 (( $+commands[fzf] )) && source <(fzf --zsh)
 
