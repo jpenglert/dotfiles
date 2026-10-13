@@ -3,5 +3,13 @@
     {
         "key": "cmd+i",
         "command": "composerMode.agent"
+    },
+    {
+        "key": "cmd+[",
+        "command": "workbench.action.navigateBack"
+    },
+    {
+        "key": "cmd+]",
+        "command": "workbench.action.navigateForward"
     }
 ]
