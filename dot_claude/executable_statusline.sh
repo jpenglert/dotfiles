@@ -2,27 +2,30 @@
 # Claude Code statusline with powerline style and git status
 # Uses nerd fonts and ANSI colors for rainbow effect
 
-input=$(cat)
+# Keep process spawns to a minimum (one jq, one git, one date): every spawn
+# is slow under endpoint security, and the herdr-agent-usage wrapper blanks
+# the status line when this script runs longer than 2 seconds.
 
-# Validate JSON and extract fields safely
-if ! echo "$input" | jq -e . >/dev/null 2>&1; then
+# Validate JSON and extract all fields in one pass, one field per line:
+# cwd, directory name, model, context percentage
+# - model could be string or object with .id field
+# - clean up model name: remove claude- prefix and date suffix, truncate
+if ! fields=$(jq -er '
+  (.workspace.current_dir // "") as $cwd
+  | $cwd,
+    ($cwd | if test("^/+$") then "/" else sub("/+$"; "") | split("/") | last // "" end),
+    (if .model | type == "object" then .model.id // .model.name // "claude"
+     elif .model | type == "string" then .model
+     else "claude"
+     end
+     | if . == "" or . == "null" then "claude" else . end
+     | sub("claude-"; "") | sub("-[0-9]*$"; "") | .[0:10]),
+    (.context_window.used_percentage | if . == null or . == false then "" else tojson end)
+' 2>/dev/null); then
     echo "⚠ invalid input"
     exit 0
 fi
-
-cwd=$(echo "$input" | jq -r '.workspace.current_dir // empty' 2>/dev/null)
-dir_name=$(basename "$cwd" 2>/dev/null || echo "?")
-
-# Extract model - could be string or object with .id field
-model=$(echo "$input" | jq -r '
-  if .model | type == "object" then .model.id // .model.name // "claude"
-  elif .model | type == "string" then .model
-  else "claude"
-  end
-' 2>/dev/null)
-[ -z "$model" ] || [ "$model" = "null" ] && model="claude"
-# Clean up model name - remove claude- prefix and date suffix, truncate
-model=$(echo "$model" | sed 's/claude-//' | sed 's/-[0-9]*$//' | cut -c1-10)
+{ IFS= read -r cwd; IFS= read -r dir_name; IFS= read -r model; IFS= read -r pct; } <<< "$fields"
 
 # ANSI color codes (using $'...' for proper escape handling)
 RESET=$'\033[0m'
@@ -54,21 +57,31 @@ FOLDER_ICON=""
 git_segment=""
 model_bg=$BG_MAGENTA
 model_fg=$FG_MAGENTA
-if git -C "$cwd" rev-parse --git-dir > /dev/null 2>&1; then
-    branch=$(git -C "$cwd" branch --show-current 2>/dev/null)
-    [ -z "$branch" ] && branch=$(git -C "$cwd" rev-parse --short HEAD 2>/dev/null)
-
-    # Get status counts
-    status=$(git -C "$cwd" status --porcelain 2>/dev/null)
-    staged=$(echo "$status" | grep -c '^[MADRC]')
-    modified=$(echo "$status" | grep -c '^.[MD]')
-    untracked=$(echo "$status" | grep -c '^??')
-    conflicted=$(echo "$status" | grep -c '^[UDA][UDA]')
-
-    # Ahead/behind and stashes
-    ahead=$(git -C "$cwd" rev-list --count @{u}..HEAD 2>/dev/null || echo 0)
-    behind=$(git -C "$cwd" rev-list --count HEAD..@{u} 2>/dev/null || echo 0)
-    stashes=$(git -C "$cwd" stash list 2>/dev/null | wc -l | tr -d ' ')
+# Untracked files are skipped: scanning for them takes seconds in large repos
+# because GIT_OPTIONAL_LOCKS=0 (Claude Code env) stops git saving its cache.
+if status=$(git -C "$cwd" status --porcelain=v2 --branch --show-stash --untracked-files=no 2>/dev/null); then
+    # One status call gives branch, ahead/behind, stashes, and file entries
+    branch=""
+    ahead=0 behind=0 stashes=0
+    staged=0 modified=0 conflicted=0
+    while IFS= read -r line; do
+        case "$line" in
+            "# branch.head "*) branch=${line#"# branch.head "} ;;
+            "# branch.ab "*)
+                ab=${line#"# branch.ab +"}
+                ahead=${ab%% -*}
+                behind=${ab##* -}
+                ;;
+            "# stash "*) stashes=${line#"# stash "} ;;
+            [12u]" "*)
+                xy=${line:2:2}
+                case "$xy" in [MADRC]?) staged=$((staged + 1)) ;; esac
+                case "$xy" in ?[MD]) modified=$((modified + 1)) ;; esac
+                case "$xy" in [UDA][UDA]) conflicted=$((conflicted + 1)) ;; esac
+                ;;
+        esac
+    done <<< "$status"
+    [ "$branch" = "(detached)" ] && branch=$(git -C "$cwd" rev-parse --short HEAD 2>/dev/null)
 
     # Build compact git status (p10k style)
     git_status=""
@@ -78,7 +91,6 @@ if git -C "$cwd" rev-parse --git-dir > /dev/null 2>&1; then
     [ "$conflicted" -gt 0 ] && git_status+="~$conflicted"
     [ "$staged" -gt 0 ] && git_status+="+$staged"
     [ "$modified" -gt 0 ] && git_status+="!$modified"
-    [ "$untracked" -gt 0 ] && git_status+="?$untracked"
 
     # Choose git segment color based on repo state (like p10k)
     if [ -n "$git_status" ]; then
@@ -100,7 +112,6 @@ fi
 
 # Context progress bar (uses built-in used_percentage from Claude Code 2.1.6+)
 context_segment=""
-pct=$(echo "$input" | jq '.context_window.used_percentage // empty' 2>/dev/null)
 if [ -n "$pct" ] && [ "$pct" != "null" ] && [ "$pct" -ge 0 ] 2>/dev/null; then
     # Build progress bar (10 chars wide)
     bar_width=10
