@@ -21,6 +21,7 @@ extensions:
   # VS Code only
   vscode:
     - bierner.markdown-emoji          # Emoji support in markdown
+    - esbenp.prettier-vscode          # Prettier formatter (JSON)
     - Google.geminicodeassist         # Gemini AI coding assistant
     - ms-vscode-remote.remote-containers  # Dev containers
 
