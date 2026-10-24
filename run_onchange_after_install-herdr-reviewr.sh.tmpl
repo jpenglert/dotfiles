@@ -7,4 +7,13 @@ set -euo pipefail
 eval "$({{ template "brew-prefix" . }}/bin/brew shellenv)"
 
 herdr plugin install persiyanov/herdr-reviewr --ref v0.39.0 --yes
+
+# Each open reviewr pane rescans its worktree with git on every poll, and the 2 s
+# default keeps the CPU busy. reviewr takes the interval only as a flag, so add
+# it to the pane command in the installed manifest; herdr reads it on each open.
+manifest=$(herdr plugin list --json |
+  jq -r '.result.plugins[] | select(.plugin_id == "persiyanov.reviewr") | .manifest_path')
+/usr/bin/sed -i '' 's|herdr-reviewr\\""\]|herdr-reviewr\\" --poll 10000"]|' "$manifest"
+grep -q -- '--poll 10000' "$manifest" ||
+  echo "herdr-reviewr: pane command changed upstream; --poll not added" >&2
 {{ end -}}

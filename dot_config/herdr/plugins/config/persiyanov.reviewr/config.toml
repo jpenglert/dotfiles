@@ -1,3 +1,6 @@
 # reviewr's own config; herdr's config.toml settings never reach it.
 # Open reviewr in its own tab rather than a split beside the agent.
 toggle_placement = "tab"
+# Open reviewr only on request. Each open pane polls its worktree with git, so
+# a pane per worktree keeps the CPU busy.
+auto_open = false
