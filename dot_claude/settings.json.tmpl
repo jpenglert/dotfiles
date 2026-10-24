@@ -111,6 +111,14 @@
     ]
   },
   "model": "opus",
+  "modelSettings": {
+    "claude-fable-5-1": {
+      "effortLevel": "xhigh"
+    },
+    "claude-opus-5-5": {
+      "effortLevel": "xhigh"
+    }
+  },
   "skillOverrides": {
     "hyperframes": "off",
     "hyperframes-cli": "off",
@@ -141,13 +149,21 @@
     "rails-upgrade@ombulabs-ai": true,
     "rails-load-defaults@ombulabs-ai": true,
     "dual-boot@ombulabs-ai": true,
-    "upgrade-cleanup@ombulabs-ai": true
+    "upgrade-cleanup@ombulabs-ai": true,
+    "code-audit@sendoso": true,
+    "layered-rails@layered-rails-skills": true
   },
   "extraKnownMarketplaces": {
     "ombulabs-ai": {
       "source": {
         "source": "git",
         "url": "https://github.com/ombulabs/claude-skills.git"
+      }
+    },
+    "layered-rails-skills": {
+      "source": {
+        "source": "github",
+        "repo": "palkan/layered-rails-skills"
       }
     }
   },
@@ -214,6 +230,7 @@
   },
   "skipDangerousModePermissionPrompt": true,
   "agentPushNotifEnabled": true,
+  "theme": "dark",
   "hooks": {
     "SessionStart": [
       {
