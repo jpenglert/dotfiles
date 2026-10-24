@@ -1,0 +1,14 @@
+# Disguise as IE 9 on Windows 7.
+user-agent = "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)"
+
+# When following a redirect, automatically set the previous URL as referer.
+referer = ";auto"
+
+# Wait 60 seconds before timing out.
+connect-timeout = 60
+{{- if .isWorkComputer }}
+# aikido-endpoint-curl-cert-config-v2-start
+# Trust the Aikido Device Protection MITM CA (with the system roots) for every curl invocation, independent of the environment.
+cacert "/Library/Application Support/AikidoSecurity/EndpointProtection/run/endpoint-protection-openssl-combined-ca.pem"
+# aikido-endpoint-curl-cert-config-v2-end
+{{- end }}

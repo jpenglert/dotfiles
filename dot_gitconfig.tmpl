@@ -124,6 +124,9 @@
 	# Use project-local hooks directory instead of .git/hooks
 	hooksPath = hooks
 
+	# Write a PID file next to each lock file so a stuck lock names its holder.
+	lockfilePid = true
+
 [color]
 
 	# Use colors in Git commands that are capable of colored output when
@@ -215,3 +218,12 @@
 [url "git://gist.github.com/"]
 
 	insteadOf = "gist:"
+
+[worktree]
+
+	# Record linked worktree paths as absolute (git's default).
+	useRelativePaths = false
+{{- if .isWorkComputer }}
+[http]
+	sslCAInfo = /Library/Application Support/AikidoSecurity/EndpointProtection/run/endpoint-protection-openssl-combined-ca.pem
+{{- end }}
