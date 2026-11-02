@@ -141,6 +141,6 @@ Example: ignore a directory but manage specific files:
 
 ## Directory Structure
 
-- `init/` - Application preference files (iTerm2, Rectangle, Terminal themes)
+- `init/` - Application preference files (Rectangle, Terminal themes)
 - `private_dot_vim/` - Vim configuration (colors, syntax, backup directories)
 - `.chezmoitemplates/` - Reusable template partials

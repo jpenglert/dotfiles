@@ -46,7 +46,7 @@
     "redhat.telemetry.enabled": true,
     "remote.autoForwardPortsSource": "hybrid",
     "terminal.explorerKind": "external",
-    "terminal.external.osxExec": "iTerm.app",
+    "terminal.external.osxExec": "Ghostty.app",
     "terminal.integrated.enableImages": true,
     "terminal.integrated.fontFamily": "MesloLGM Nerd Font Mono",
     "[ruby]": {

@@ -54,7 +54,6 @@ System preferences for:
 
 ### Applications
 Installed via Homebrew Cask:
-- iTerm2
 - Rectangle (window management)
 - Scroll Reverser
 - 1Password CLI
@@ -107,7 +106,7 @@ run_once_after_*            # Scripts that run once after applying
 dot_*                       # Dotfiles (become ~/.*)
 dot_*.tmpl                  # Templated dotfiles
 private_dot_vim/            # ~/.vim directory
-init/                       # App config files (iTerm2, Rectangle)
+init/                       # App config files (Rectangle, Terminal themes)
 ```
 
 ## Based On
