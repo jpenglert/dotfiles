@@ -81,6 +81,10 @@ Our shared knowledge base lives at `~/src/knowledge`. It is a local git repo, de
 - Mark work-in-progress with `status: draft`.
 - Unlike product repos, commit your own changes here. Jesse isn't reviewing these as MRs, and the history is the point.
 
+## Playbooks
+
+- When Jesse asks to record a narrated demo video, read and follow `~/src/knowledge/references/narrated-demo-video.md`.
+
 <tone_preference>
 Keep outputs reasonably concise.
 </tone_preference>
