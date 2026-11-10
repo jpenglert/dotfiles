@@ -88,6 +88,20 @@ ZSH_ALIAS_FINDER_AUTOMATIC=true
 # Enable spelling correction for commands only
 setopt correct
 
+# Source a command's init script from a cache instead of running the command in every new shell.
+# shortcut: regenerates only when the binary changes; if a tool's init output changes without
+# that, run `rm -rf ~/.cache/zsh-init`.
+_cached_init() {
+  local cache="${XDG_CACHE_HOME:-$HOME/.cache}/zsh-init/$1.zsh" bin=$2
+  shift 2
+  if [[ ! -s $cache || $bin -nt $cache ]]; then
+    mkdir -p "${cache:h}"
+    # Write then rename so panes opening at the same time never source a half-written file.
+    "$bin" "$@" >| "$cache.$$" && mv -f "$cache.$$" "$cache" || rm -f "$cache.$$"
+  fi
+  [[ -s $cache ]] && source "$cache"
+}
+
 {{- if eq .chezmoi.os "darwin" }}
 # Initialize Homebrew before using its commands. ~/.path is sourced later.
 if [[ -x "{{ template "brew-prefix" . }}/bin/brew" ]]; then
@@ -132,7 +146,7 @@ eval "$(mise activate zsh)"
 
 # oso-cli completions (bashcompinit enables bash-style completions in zsh)
 autoload -Uz +X bashcompinit && bashcompinit
-eval "$(oso completions)"
+_cached_init oso-completions "$commands[oso]" completions
 {{- end }}
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

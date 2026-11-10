@@ -2,9 +2,6 @@
 typeset -U path PATH
 
 {{- if eq .chezmoi.os "darwin" }}
-# Add brew to path
-eval $({{ template "brew-prefix" . }}/bin/brew shellenv)
-
 # Use brew installed GNU utilities over macOS built-ins
 export PATH="{{ template "brew-prefix" . }}/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="{{ template "brew-prefix" . }}/opt/gnu-sed/libexec/gnubin:$PATH"
