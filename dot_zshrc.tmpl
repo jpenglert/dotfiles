@@ -176,4 +176,6 @@ export BUNDLE_SSL_CA_CERT="/Library/Application Support/AikidoSecurity/EndpointP
 export SSL_CERT_FILE="/Library/Application Support/AikidoSecurity/EndpointProtection/run/endpoint-protection-openssl-combined-ca.pem"
 export CURL_CA_BUNDLE="/Library/Application Support/AikidoSecurity/EndpointProtection/run/endpoint-protection-openssl-combined-ca.pem"
 # aikido-endpoint-curl-cert-config-v2-end
+# ruby-lsp turns spaces in Bundler settings into colons, so Bundler gets a link to the same CA
+export BUNDLE_SSL_CA_CERT="$HOME/.aikido-ruby-ca.pem"
 {{- end }}
