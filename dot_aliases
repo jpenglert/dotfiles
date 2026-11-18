@@ -132,3 +132,9 @@ alias pimage='mvn -DskipTests=true clean dependency:copy-dependencies package'
 
 # Create github PR quickly
 alias ghpr='gh pr create -w -f'
+
+# Claude Code opens a link on a plain click only when TERM_PROGRAM says Ghostty, because Ghostty
+# sends Cmd+click without the Cmd bit. herdr sets TERM_PROGRAM=herdr, so link clicks did nothing.
+if [[ "$TERM_PROGRAM" == herdr ]]; then
+  alias claude='TERM_PROGRAM=ghostty claude'
+fi
