@@ -121,6 +121,9 @@
     },
     "claude-opus-5-5": {
       "effortLevel": "xhigh"
+    },
+    "claude-mythos-5-1": {
+      "effortLevel": "high"
     }
   },
   "skillOverrides": {
@@ -156,7 +159,9 @@
     "upgrade-cleanup@ombulabs-ai": true,
     "code-audit@sendoso": true,
     "layered-rails@layered-rails-skills": true,
-    "modern-web-guidance@claude-plugins-official": true
+    "modern-web-guidance@claude-plugins-official": true,
+    "ponytail@ponytail": true,
+    "okf@sendoso": true
   },
   "extraKnownMarketplaces": {
     "ombulabs-ai": {
@@ -169,6 +174,20 @@
       "source": {
         "source": "github",
         "repo": "palkan/layered-rails-skills"
+      }
+    },
+    "ponytail": {
+      "source": {
+        "source": "github",
+        "repo": "DietrichGebert/ponytail"
+      }
+    }
+  },
+  "pluginConfigs": {
+    "ponytail@ponytail": {
+      "options": {
+        "ledger": true,
+        "sendNames": true
       }
     }
   },

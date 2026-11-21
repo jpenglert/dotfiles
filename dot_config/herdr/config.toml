@@ -86,3 +86,6 @@ key = "prefix+m"
 type = "shell"
 command = "\"$HOME/.config/herdr/flag-workspace.sh\""
 description = "flag or unflag this workspace"
+
+[experimental]
+kitty_graphics = true
