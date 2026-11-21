@@ -61,6 +61,9 @@ packages:
       # Terminal
       - herdr
 
+      # Diagrams (mmdc; its headless Chrome comes from install-mermaid-chrome)
+      - mermaid-cli
+
       # AI tools
       - gemini-cli
 

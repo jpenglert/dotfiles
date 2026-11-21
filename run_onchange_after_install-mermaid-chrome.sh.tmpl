@@ -1,0 +1,16 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/usr/bin/env bash
+# Install the headless Chrome build that mermaid-cli's bundled Puppeteer
+# expects. Homebrew's mermaid-cli formula leaves it out, so `mmdc` can't
+# render without it. The version line below comes from Homebrew, so when
+# `brew upgrade` moves mermaid-cli, this script changes and the next
+# `chezmoi apply` installs the matching browser into ~/.cache/puppeteer.
+# mermaid-cli: {{ output "sh" "-c" (printf "%s/bin/brew list --versions mermaid-cli 2>/dev/null || true" (includeTemplate "brew-prefix" .)) | trim }}
+set -euo pipefail
+
+eval "$({{ template "brew-prefix" . }}/bin/brew shellenv)"
+
+# --no-install runs the Puppeteer inside mermaid-cli, never a downloaded one.
+cd "$(brew --prefix mermaid-cli)/libexec/lib/node_modules/@mermaid-js/mermaid-cli"
+npx --no-install puppeteer browsers install chrome-headless-shell
+{{ end -}}

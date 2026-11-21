@@ -11,6 +11,7 @@ README.md
 !.claude/CLAUDE.md
 !.claude/settings.json
 !.claude/statusline.sh
+!.claude/skills
 init/
 
 # External Directories #########################################################
