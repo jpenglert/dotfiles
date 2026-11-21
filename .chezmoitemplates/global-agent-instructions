@@ -72,7 +72,7 @@ Our shared knowledge base lives at `~/src/knowledge`. It is a local git repo, de
 
 **What does not go there:** code, docs that belong to a product repo, and your per-conversation memory. Memory stays at its harness-assigned path; it holds short recall-oriented facts, while the knowledge base holds the long-form documents those facts point at. Cross-link the two — a memory entry should name the knowledge base document it summarizes.
 
-**Format:** [Open Knowledge Format v0.2](file:///Users/jenglert/src/knowledge/references/okf-spec.md). Read `~/src/knowledge/references/okf-spec.md` before authoring. The rules that matter: every `.md` file except `index.md` and `log.md` opens with YAML frontmatter carrying a non-empty `type`; `index.md` and `log.md` are reserved.
+**Format:** [Open Knowledge Format v0.3](file:///Users/jenglert/src/knowledge/references/okf-spec.md). Read `~/src/knowledge/references/okf-spec.md` before authoring. The rules that matter: every `.md` file except `index.md` and `log.md` opens with YAML frontmatter carrying a non-empty `type`; `index.md` and `log.md` are reserved.
 
 **Working with it:**
 - Read `~/src/knowledge/index.md` first to see what already exists. Update an existing document rather than starting a parallel one.
