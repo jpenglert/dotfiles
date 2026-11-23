@@ -10,10 +10,12 @@ description: Render the Mermaid diagrams in a Markdown file to PNG with mmdc, ch
 ## Render
 
 1. Pull each ```` ```mermaid ```` block out of the Markdown file into its own `.mmd` file in the scratchpad, numbered in page order. Name each after the heading it sits under.
-2. Render each one:
+2. Render each one at its natural size. Without `--size`, `mmdc` fits every diagram to about 800 pixels wide, which shrinks wide diagrams until their labels can't be read. The SVG's `viewBox` gives the natural size:
 
    ```bash
-   mmdc -i <name>.mmd -o <name>.png -b white -s 2
+   mmdc -q -i <name>.mmd -o <name>.svg
+   size=$(grep -o 'viewBox="[^"]*"' <name>.svg | head -1 | tr -d '"' | awk '{m = $3 > $4 ? $3 : $4; printf "%d", m + 0.999}')
+   mmdc -q -i <name>.mmd -o <name>.png -b white -s 2 --size "$size"
    ```
 
 3. If `mmdc` says it can't find `chrome-headless-shell`, Homebrew has upgraded mermaid-cli since the browser was installed. Ask the user to run `chezmoi apply`; don't install a browser yourself.
@@ -24,10 +26,10 @@ description: Render the Mermaid diagrams in a Markdown file to PNG with mmdc, ch
 
 Run these from a checkout of the MR's repo, so `:id` resolves to the project.
 
-1. Upload each PNG. The response's `markdown` field is the image link:
+1. Upload each PNG. Use `--form`, not `-F`, which sends the file's bytes as a JSON field and gets HTTP 400. The response's `markdown` field is the image link:
 
    ```bash
-   glab api --method POST "projects/:id/uploads" -F "file=@<name>.png" | jq -r .markdown
+   glab api --method POST "projects/:id/uploads" --form "file=@<name>.png" | jq -r .markdown
    ```
 
    Uploads are visible to everyone who can see the project. Never upload an image that shows a secret, a token, an account ID or an IP address.
