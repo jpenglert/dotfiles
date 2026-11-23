@@ -336,8 +336,11 @@ defaults write com.apple.dock expose-group-by-app -bool false
 # Don't automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
 
-# Keep Dock visible (don't autohide)
-defaults write com.apple.dock autohide -bool false
+# Autohide the Dock on work computers; keep it visible elsewhere
+defaults write com.apple.dock autohide -bool {{ if .isWorkComputer }}true{{ else }}false{{ end }}
+
+# Show the Dock with no delay when autohide is on
+defaults write com.apple.dock autohide-delay -float 0
 
 # Make Dock icons of hidden applications translucent
 defaults write com.apple.dock showhidden -bool true
